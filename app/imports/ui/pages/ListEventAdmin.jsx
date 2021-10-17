@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import { Events } from '../../api/event/Event';
 import { Comments } from '/imports/api/comment/Comment';
 import EventItemAdmin from '../components/EventItemAdmin';
+import { UserInfo } from '../../api/userinfo/UserInfo';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class ListEventAdmin extends React.Component {
@@ -35,6 +36,19 @@ class ListEventAdmin extends React.Component {
               {this.props.events.map((event) => <EventItemAdmin key={event._id} event={event} comments={this.props.comments.filter(comment => (comment.eventId === event._id))}/>)}
             </Table.Body>
           </Table>
+          <Header as="h2" textAlign="center">List Users (Admin)</Header>
+          <Table>
+            <Table.Header><Table.Row>
+              <Table.HeaderCell>User</Table.HeaderCell>
+
+            </Table.Row>
+            </Table.Header>
+            <Table.Body>
+              {this.props.userinfo.map((listuser) => <Table.Row key={listuser._id}>
+                <Table.Cell>{listuser.user}</Table.Cell>
+              </Table.Row>) }
+            </Table.Body>
+          </Table>
         </Container>
     );
   }
@@ -42,6 +56,7 @@ class ListEventAdmin extends React.Component {
 
 /** Require an array of Stuff documents in the props. */
 ListEventAdmin.propTypes = {
+  userinfo: PropTypes.array.isRequired,
   events: PropTypes.array.isRequired,
   comments: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
@@ -52,9 +67,11 @@ export default withTracker(() => {
   // Get access to Stuff documents.
   const subscription = Meteor.subscribe(Events.adminPublicationName);
   const subscription2 = Meteor.subscribe(Comments.adminPublicationName);
+  const subscription3 = Meteor.subscribe('UserInfo');
   return {
+    userinfo: UserInfo.find({}).fetch(),
     events: Events.collection.find({}).fetch(),
     comments: Comments.collection.find({}).fetch(),
-    ready: (subscription.ready() && subscription2.ready()),
+    ready: (subscription.ready() && subscription2.ready() && subscription3.ready()),
   };
 })(ListEventAdmin);

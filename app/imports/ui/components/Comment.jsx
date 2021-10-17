@@ -1,5 +1,5 @@
 import React from 'react';
-import { Feed, Rating} from 'semantic-ui-react';
+import { Feed, Rating, Button} from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 
@@ -15,6 +15,7 @@ class Comment extends React.Component {
                     {this.props.comment.comment}
                     <br></br>
                     <Rating defaultRating={this.props.comment.rating} maxRating={5} disabled />
+                    <Button>Approve</Button>
                   </Feed.Summary>
                 </Feed.Content>
             </Feed.Event>

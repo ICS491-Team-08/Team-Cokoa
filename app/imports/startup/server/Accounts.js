@@ -11,9 +11,9 @@ function createUser(email, password, role) {
     email: email,
     password: password,
   });
-  if (role) {
+  if (role === 'admin') {
     Roles.createRole(role, { unlessExists: true });
-    Roles.addUsersToRoles(userID, role);
+    Roles.addUsersToRoles(userID, 'admin');
   }
 }
 

@@ -1,29 +1,24 @@
 import React from 'react';
 import { Grid, Loader, Header, Segment } from 'semantic-ui-react';
 import swal from 'sweetalert';
-import { AutoForm, ErrorsField, NumField, SelectField, SubmitField, TextField } from 'uniforms-semantic';
+import { AutoForm, ErrorsField, HiddenField, NumField, SelectField, SubmitField, TextField } from 'uniforms-semantic';
+import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
-import 'uniforms-bridge-simple-schema-2'; // required for Uniforms
-import { Stuffs } from '../../api/stuff/StuffCollection';
-import { stuffUpdateMethod } from '../../api/stuff/StuffCollection.methods';
+import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
+import { Events } from '../../api/event/Event';
+
+const bridge = new SimpleSchema2Bridge(Events.schema);
 
 /** Renders the Page for editing a single document. */
-class EditStuff extends React.Component {
+class EditEvent extends React.Component {
 
   /** On successful submit, insert the data. */
   submit(data) {
-    // console.log(data);
-    const { name, quantity, condition, _id } = data;
-    const updateData = {
-      id: _id,
-      name,
-      quantity,
-      condition,
-    };
-    stuffUpdateMethod.call(updateData, (error) => (error ?
+    const { title, location, image, cost, _id } = data;
+    Events.collection.update(_id, { $set: { title, location, image, cost } }, (error) => (error ?
       swal('Error', error.message, 'error') :
-      swal('Success', 'Item updated successfully', 'success')));
+      swal('Success', 'Event updated successfully', 'success')));
   }
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
@@ -36,14 +31,16 @@ class EditStuff extends React.Component {
     return (
         <Grid container centered>
           <Grid.Column>
-            <Header as="h2" textAlign="center">Edit Stuff</Header>
-            <AutoForm schema={Stuffs.getSchema()} onSubmit={data => this.submit(data)} model={this.props.doc}>
+            <Header as="h2" textAlign="center">Edit Event</Header>
+            <AutoForm schema={bridge} onSubmit={data => this.submit(data)} model={this.props.doc}>
               <Segment>
-                <TextField name='name'/>
-                <NumField name='quantity' decimal={false}/>
-                <SelectField name='condition'/>
+                <TextField name='title'/>
+                <TextField name='location'/>
+                <TextField name='image'/>
+                <SelectField name='cost'/>
                 <SubmitField value='Submit'/>
                 <ErrorsField/>
+                <HiddenField name='owner' />
               </Segment>
             </AutoForm>
           </Grid.Column>
@@ -53,7 +50,7 @@ class EditStuff extends React.Component {
 }
 
 /** Require the presence of a Stuff document in the props object. Uniforms adds 'model' to the props, which we use. */
-EditStuff.propTypes = {
+EditEvent.propTypes = {
   doc: PropTypes.object,
   model: PropTypes.object,
   ready: PropTypes.bool.isRequired,
@@ -64,9 +61,9 @@ export default withTracker(({ match }) => {
   // Get the documentID from the URL field. See imports/ui/layouts/App.jsx for the route containing :_id.
   const documentId = match.params._id;
   // Get access to Stuff documents.
-  const subscription = Stuffs.subscribeStuff();
+  const subscription = Meteor.subscribe(Events.userPublicationName);
   return {
-    doc: Stuffs.findOne(documentId),
+    doc: Events.collection.findOne(documentId),
     ready: subscription.ready(),
   };
-})(EditStuff);
+})(EditEvent);

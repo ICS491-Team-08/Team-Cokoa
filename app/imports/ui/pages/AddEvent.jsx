@@ -3,39 +3,39 @@ import { Grid, Segment, Header } from 'semantic-ui-react';
 import { AutoForm, ErrorsField, NumField, SelectField, SubmitField, TextField } from 'uniforms-semantic';
 import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
-import 'uniforms-bridge-simple-schema-2'; // required for Uniforms
+import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
-import { stuffDefineMethod } from '../../api/stuff/StuffCollection.methods';
+import { Events } from '../../api/event/Event';
 
 /** Create a schema to specify the structure of the data to appear in the form. */
 const formSchema = new SimpleSchema({
-  name: String,
-  quantity: Number,
-  condition: {
+  title: String,
+  location: String,
+  image: String,
+  owner: String,
+  cost: {
     type: String,
-    allowedValues: ['excellent', 'good', 'fair', 'poor'],
-    defaultValue: 'good',
+    allowedValues: ['$', '$$', '$$$'],
+    defaultValue: '$',
   },
 });
 
-/** Renders the Page for adding stuff. */
-class AddStuff extends React.Component {
+const bridge = new SimpleSchema2Bridge(formSchema);
+
+/** Renders the Page for adding a document. */
+class AddEvent extends React.Component {
 
   /** On submit, insert the data. */
   submit(data, formRef) {
-    // console.log('AddStuff.submit', data);
-    const { name, quantity, condition } = data;
+    const { title, location, image, cost} = data;
     const owner = Meteor.user().username;
-    // console.log(`{ ${name}, ${quantity}, ${condition}, ${owner} }`);
-    stuffDefineMethod.call({ name, quantity, condition, owner },
+    Events.collection.insert({ title, location, image, cost, owner },
       (error) => {
         if (error) {
           swal('Error', error.message, 'error');
-          // console.error(error.message);
         } else {
           swal('Success', 'Item added successfully', 'success');
           formRef.reset();
-          // console.log('Success');
         }
       });
   }
@@ -46,12 +46,13 @@ class AddStuff extends React.Component {
     return (
         <Grid container centered>
           <Grid.Column>
-            <Header as="h2" textAlign="center">Add Stuff</Header>
-            <AutoForm ref={ref => { fRef = ref; }} schema={formSchema} onSubmit={data => this.submit(data, fRef)} >
+            <Header as="h2" textAlign="center">Add Event</Header>
+            <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)} >
               <Segment>
-                <TextField name='name'/>
-                <NumField name='quantity' decimal={false}/>
-                <SelectField name='condition'/>
+                <TextField name='title'/>
+                <TextField name='location'/>
+                <TextField name='image'/>
+                <SelectField name='cost'/>
                 <SubmitField value='Submit'/>
                 <ErrorsField/>
               </Segment>
@@ -62,4 +63,4 @@ class AddStuff extends React.Component {
   }
 }
 
-export default AddStuff;
+export default AddEvent;

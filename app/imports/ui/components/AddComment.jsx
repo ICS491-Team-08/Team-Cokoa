@@ -26,7 +26,7 @@ class AddComment extends React.Component {
     submit(data, formRef) {
       const { comment, rating, eventId, createdAt } = data;
       const owner = Meteor.user().username;
-      Comments.collection.insert({ comment, rating, eventId, createdAt, owner },
+      Comments.collection.insert({ comment, rating, eventId, createdAt, owner, approved: false },
           (error) => {
             if (error) {
               swal('Error', error.message, 'error');

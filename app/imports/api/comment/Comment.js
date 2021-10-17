@@ -15,6 +15,7 @@ class CommentsCollection {
       rating: Number,
       eventId: String,
       createdAt: Date,
+      approved: Boolean,
       owner: String,
     }, { tracker: Tracker });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.

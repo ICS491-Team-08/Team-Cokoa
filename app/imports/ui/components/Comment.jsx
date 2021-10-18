@@ -42,16 +42,11 @@ class Comment extends React.Component {
               defaultRating={this.props.comment.rating}
               maxRating={5}
               disabled
-            /></div>
-            <div className="field">
-            <label>COVID-19: </label>
-            {this.props.comment.covid}
-            </div>
-            <div className="field">
-            <label>Comment: </label>
-            {this.props.comment.comment}
-            </div>
-            {this.props.comment.approved ? (<Label>Approved <Icon fitted name='check circle' color='green'/></Label>) : <Button onClick={this.approved}>Approve</Button>}
+            />
+            {this.props.isAdminPage && !this.props.comment.approved && (
+              <Button onClick={this.approved}>Approve</Button>
+            )}
+            {this.props.comment.approved && <Label>Approved</Label>}
           </Feed.Summary>
         </Feed.Content>
       </Feed.Event>

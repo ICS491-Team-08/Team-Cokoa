@@ -1,3 +1,4 @@
+/* @import "react-slideshow-image/dist/styles.css"; */
 #navbar {
   background-color: rgb(44, 62, 80);
 }
@@ -8,4 +9,10 @@
 
 .nav {
   font-size: medium;
+}
+
+.each-fade{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }

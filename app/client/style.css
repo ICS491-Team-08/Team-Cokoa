@@ -1,12 +1,12 @@
 /* @import "react-slideshow-image/dist/styles.css"; */
 #navbar {
   background-color: rgb(44, 62, 80);
+  font-size: medium;
 }
 
-#landing {
-  margin-top: 50px;
+#landing-page {
+  margin-bottom: 50px;
 }
-
 .nav {
   font-size: medium;
 }
@@ -16,3 +16,8 @@
   align-items: center;
   flex-direction: column;
 }
+
+.slide-container {
+  margin-top: 50px;
+}
+

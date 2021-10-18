@@ -32,14 +32,18 @@ class LandingCall extends React.Component {
       },
     ];
     return (
-      <Grid columns={2}>
+      <Grid columns={1}>
         <Grid.Column>
             <div className="slide-container">
               <Fade>
                 {fadeImages.map((fadeImage, index) => (
                   <div className="each-fade" key={index}>
                     <div className="image-container">
-                      <img src={fadeImage.url} />
+                      <Image
+                          size="large"
+                          verticalAlign="middle"
+                          circular
+                          src={fadeImage.url} />
                     </div>
                     <h2>{fadeImage.caption}</h2>
                   </div>
@@ -48,21 +52,7 @@ class LandingCall extends React.Component {
             </div>
         </Grid.Column>
         <Grid.Column>
-          <Grid
-            className="landing-page"
-            verticalAlign="middle"
-            textAlign="center"
-            columns={1}
-            id="landing"
-          >
-            <Grid.Column>
-              <Image
-                size="large"
-                verticalAlign="middle"
-                circular
-                src="/images/meteor-logo.png"
-              />
-            </Grid.Column>
+          <Grid verticalAlign="middle" textAlign="center" columns={1} id="landing-page">
             <Grid.Column>
               <Header style={{ color: "#FFFFFF" }} as="h1">
                 Add your event and get pre-checked!

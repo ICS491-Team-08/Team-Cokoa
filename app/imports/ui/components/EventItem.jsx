@@ -1,10 +1,17 @@
 import React from 'react';
-import { Image, Card, Feed } from 'semantic-ui-react';
+import { Image, Card, Feed, Button, Icon, Menu } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter, Link } from 'react-router-dom';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 class EventItem extends React.Component {
+
+  removeItem(docID) {
+    // eslint-disable-next-line no-console
+    console.log(`item to delete is: ${docID}`);
+    this.props.Events.collection.remove(docID);
+  }
+
   render() {
     return (
         <Card>
@@ -18,7 +25,8 @@ class EventItem extends React.Component {
           </Card.Content>
           <Card.Content extra>
             <Feed>
-              <Link to={`/edit/${this.props.event._id}`}>Edit</Link>
+                <Link to={`/edit/${this.props.event._id}`}>Edit <Icon name='edit'/></Link>
+                <Button floated="right" size="mini" icon onClick={() => this.removeItem(this.props.event._id)}><Icon name='trash'/></Button>
             </Feed>
           </Card.Content>
         </Card>
@@ -29,6 +37,7 @@ class EventItem extends React.Component {
 /** Require a document to be passed to this component. */
 EventItem.propTypes = {
   event: PropTypes.object.isRequired,
+  Events: PropTypes.object.isRequired,
 };
 
 /** Wrap this component in withRouter since we use the <Link> React Router element. */

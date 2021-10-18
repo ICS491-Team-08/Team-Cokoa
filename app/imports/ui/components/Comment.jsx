@@ -38,7 +38,10 @@ class Comment extends React.Component {
               maxRating={5}
               disabled
             />
-            {this.props.comment.approved ? (<Label>Approved</Label>) : <Button onClick={this.approved}>Approve</Button>}
+            {this.props.isAdminPage && !this.props.comment.approved && (
+              <Button onClick={this.approved}>Approve</Button>
+            )}
+            {this.props.comment.approved && <Label>Approved</Label>}
           </Feed.Summary>
         </Feed.Content>
       </Feed.Event>

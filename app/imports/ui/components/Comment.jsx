@@ -43,8 +43,8 @@ class Comment extends React.Component {
               disabled
             /></div>
             <div className="field">
-            <label>Vaccination: </label>
-            {this.props.comment.vaccine}
+            <label>COVID-19: </label>
+            {this.props.comment.covid}
             </div>
             <div className="field">
             <label>Comment: </label>

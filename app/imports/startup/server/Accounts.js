@@ -1,19 +1,23 @@
 import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
 import { Roles } from 'meteor/alanning:roles';
-import { UserInfo } from '../../api/userinfo/UserInfo';
 
 /* eslint-disable no-console */
 
 function createUser(email, password, role) {
   console.log(`  Creating user ${email}.`);
-  UserInfo.insert({ user: email });
   const userID = Accounts.createUser({
     username: email,
     email: email,
     password: password,
   });
+
   if (role === 'admin') {
+    Meteor.users.update(userID, {
+      $set: {
+        isAdmin: true
+      }
+    });
     Roles.createRole(role, { unlessExists: true });
     Roles.addUsersToRoles(userID, 'admin');
   }

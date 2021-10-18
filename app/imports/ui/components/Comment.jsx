@@ -1,5 +1,5 @@
 import React from "react";
-import { Feed, Rating, Button, Label } from "semantic-ui-react";
+import { Feed, Rating, Button, Label, Icon } from "semantic-ui-react";
 import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
 import swal from "sweetalert";
@@ -26,22 +26,32 @@ class Comment extends React.Component {
     return (
       <Feed.Event>
         <Feed.Content>
+          <div className="field">
+          <br/>
+          <label>User: </label>
           <Feed.User>{this.props.comment.owner}</Feed.User>
-          <Feed.Date
-            content={this.props.comment.createdAt.toLocaleDateString("en-US")}
-          />
+          </div>
+          <div className="field">
+          <label>Date: </label>
+          <Feed.Date content={this.props.comment.createdAt.toLocaleDateString("en-US")}/>
+          </div>
           <Feed.Summary>
-            {this.props.comment.comment}
-            <br></br>
+            <div className="field">
+            <label>Mood: </label>
             <Rating
               defaultRating={this.props.comment.rating}
               maxRating={5}
               disabled
             />
+            </div>
+            <div className="field">
+            <label>Comment: </label>
+            {this.props.comment.comment}
+            </div>
             {this.props.isAdminPage && !this.props.comment.approved && (
               <Button onClick={this.approved}>Approve</Button>
             )}
-            {this.props.comment.approved && <Label>Approved</Label>}
+            {this.props.comment.approved && <Label>Approved <Icon fitted name='check circle' color='green'/></Label>}
           </Feed.Summary>
         </Feed.Content>
       </Feed.Event>

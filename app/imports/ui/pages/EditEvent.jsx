@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid, Loader, Header, Segment } from 'semantic-ui-react';
 import swal from 'sweetalert';
-import { AutoForm, ErrorsField, HiddenField, NumField, SelectField, SubmitField, TextField } from 'uniforms-semantic';
+import { AutoForm, ErrorsField, HiddenField, DateField, SelectField, SubmitField, TextField } from 'uniforms-semantic';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
@@ -15,8 +15,8 @@ class EditEvent extends React.Component {
 
   /** On successful submit, insert the data. */
   submit(data) {
-    const { title, location, image, cost, _id } = data;
-    Events.collection.update(_id, { $set: { title, location, image, cost } }, (error) => (error ?
+    const { title, location, image, cost, description, eventDate, _id } = data;
+    Events.collection.update(_id, { $set: { title, location, image, cost, description, eventDate } }, (error) => (error ?
       swal('Error', error.message, 'error') :
       swal('Success', 'Event updated successfully', 'success')));
   }
@@ -35,8 +35,15 @@ class EditEvent extends React.Component {
             <AutoForm schema={bridge} onSubmit={data => this.submit(data)} model={this.props.doc}>
               <Segment>
                 <TextField name='title'/>
+                <DateField
+                    name="eventDate"
+                    label="Date"
+                    max={new Date(2100, 1, 1)}
+                    min={new Date(2000, 1, 1)}
+                />
                 <TextField name='location'/>
                 <TextField name='image'/>
+                <TextField name='description'/>
                 <SelectField name='cost'/>
                 <SubmitField value='Submit'/>
                 <ErrorsField/>

@@ -10,8 +10,10 @@ class EventItemAdmin extends React.Component {
         <Table.Row>
           <Table.Cell> <Image size='tiny' src={this.props.event.image}/> </Table.Cell>
           <Table.Cell>{this.props.event.title}</Table.Cell>
+          <Table.Cell>{this.props.event.eventDate?.toDateString()}</Table.Cell>
           <Table.Cell>{this.props.event.location}</Table.Cell>
           <Table.Cell>{this.props.event.cost}</Table.Cell>
+          <Table.Cell>{this.props.event.description}</Table.Cell>
           <Table.Cell>{this.props.event.owner}</Table.Cell>
           <Table.Cell>
             <Feed>

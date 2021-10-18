@@ -14,11 +14,18 @@ class EventsCollection {
       title: String,
       location: String,
       image: String,
-      owner: String,
+      owner: {
+        type: String,
+        optional: true,
+      },
       cost: {
         type: String,
         allowedValues: ['$', '$$', '$$$'],
         defaultValue: '$',
+      },
+      description: String,
+      eventDate: {
+        type: Date,
       },
     }, { tracker: Tracker });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.

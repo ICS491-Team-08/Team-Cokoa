@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid, Segment, Header } from 'semantic-ui-react';
-import { AutoForm, ErrorsField, NumField, SelectField, SubmitField, TextField } from 'uniforms-semantic';
+import { AutoForm, ErrorsField, DateField, SelectField, SubmitField, TextField } from 'uniforms-semantic';
 import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
@@ -12,12 +12,17 @@ const formSchema = new SimpleSchema({
   title: String,
   location: String,
   image: String,
-  owner: String,
+  owner: {
+    type: String,
+    optional: true,
+  },
   cost: {
     type: String,
     allowedValues: ['$', '$$', '$$$'],
     defaultValue: '$',
   },
+  description: String,
+  eventDate: Date,
 });
 
 const bridge = new SimpleSchema2Bridge(formSchema);
@@ -27,9 +32,9 @@ class AddEvent extends React.Component {
 
   /** On submit, insert the data. */
   submit(data, formRef) {
-    const { title, location, image, cost} = data;
+    const { title, location, image, cost, description, eventDate } = data;
     const owner = Meteor.user().username;
-    Events.collection.insert({ title, location, image, cost, owner },
+    Events.collection.insert({ title, location, image, cost, description, eventDate, owner },
       (error) => {
         if (error) {
           swal('Error', error.message, 'error');
@@ -50,8 +55,15 @@ class AddEvent extends React.Component {
             <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)} >
               <Segment>
                 <TextField name='title'/>
+                <DateField
+                    name='eventDate'
+                    label='Date'
+                    max={new Date(2100, 1, 1)}
+                    min={new Date(2000, 1, 1)}
+                />
                 <TextField name='location'/>
                 <TextField name='image'/>
+                <TextField name='description'/>
                 <SelectField name='cost'/>
                 <SubmitField value='Submit'/>
                 <ErrorsField/>

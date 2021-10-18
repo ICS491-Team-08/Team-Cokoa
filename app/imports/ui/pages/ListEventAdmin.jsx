@@ -26,8 +26,10 @@ class ListEventAdmin extends React.Component {
               <Table.Row>
                 <Table.HeaderCell>Image</Table.HeaderCell>
                 <Table.HeaderCell>Title</Table.HeaderCell>
+                <Table.HeaderCell>Date</Table.HeaderCell>
                 <Table.HeaderCell>Location</Table.HeaderCell>
                 <Table.HeaderCell>Cost</Table.HeaderCell>
+                <Table.HeaderCell>Description</Table.HeaderCell>
                 <Table.HeaderCell>Owner</Table.HeaderCell>
                 <Table.HeaderCell>Comments</Table.HeaderCell>
               </Table.Row>

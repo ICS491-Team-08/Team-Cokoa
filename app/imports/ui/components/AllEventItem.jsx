@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, Card, Feed } from 'semantic-ui-react';
+import { Image, Card } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter, Link } from 'react-router-dom';
 import AddComment from '/imports/ui/components/AddComment';
@@ -14,7 +14,9 @@ class AllEventItem extends React.Component {
           <Card.Content>
             <Card.Header>{this.props.event.title}</Card.Header>
             <Card.Meta>{this.props.event.cost}</Card.Meta>
+            <Card.Description><strong>Date: {this.props.event.eventDate.toDateString()}</strong></Card.Description>
             <Card.Description> Location: {this.props.event.location}</Card.Description>
+            <Card.Description> Description: {this.props.event.description}</Card.Description>
           </Card.Content>
           <Card.Content extra>
             {this.props.comments.map((comment, index) => <Comment key={index} comment={comment}/>)}

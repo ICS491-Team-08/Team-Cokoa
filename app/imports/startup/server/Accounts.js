@@ -12,14 +12,17 @@ function createUser(email, password, role) {
     password: password,
   });
 
-  if (role === 'admin') {
+  if (role === 'superAdmin') {
     Meteor.users.update(userID, {
       $set: {
-        isAdmin: true
+        isAdmin: true,
+        isSuperAdmin: true,
       }
     });
     Roles.createRole(role, { unlessExists: true });
-    Roles.addUsersToRoles(userID, 'admin');
+    Roles.createRole("admin", {unlessExists: true});
+    Roles.addUsersToRoles(userID, role);
+    Roles.addUsersToRoles(userID, "admin");
   }
 }
 

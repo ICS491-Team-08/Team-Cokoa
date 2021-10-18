@@ -3,7 +3,7 @@ import { Roles } from "meteor/alanning:roles";
 
 Meteor.methods({
   makeAdmin(targetUserId) {
-    if (this.userId && Roles.userIsInRole(this.userId, "admin")) {
+    if (this.userId && Roles.userIsInRole(this.userId, "superAdmin")) {
       Meteor.users.update(targetUserId, {
         $set: {
           isAdmin: true,
@@ -20,7 +20,7 @@ Meteor.methods({
     }
   },
   removeAdmin(targetUserId) {
-    if (this.userId && Roles.userIsInRole(this.userId, "admin")) {
+    if (this.userId && Roles.userIsInRole(this.userId, "superAdmin")) {
       Meteor.users.update(targetUserId, {
         $set: {
           isAdmin: false,

@@ -66,32 +66,31 @@ class AddComment extends React.Component {
       return (
               <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)} >
                 <Segment>
-                <Accordion collapsible>
+                  <Accordion collapsible>
                   <AccordionItem>
-                  <AccordionButton>Check-In</AccordionButton>
-                <AccordionPanel>
-                <br/>
-                <div className="field">
-                <label>How is your overall mood today?</label>
-                </div>
-                <div>
+                  <AccordionButton style={{ padding: "5px 15px", borderRadius: 5,}}> Check-In </AccordionButton>
+                  <AccordionPanel>
+                  <br/>
+                  <div className="field">
+                  <label>How is your overall mood today?</label>
+                  </div>
+                  <div>
                   <Rating maxRating={5} onRate={this.handleRate}/>
                   <br></br>
                   <br></br>
-                </div>
-              <SelectField label ='COVID-19 Status' name='covid' options={covidOptions} placeholder='Choose one of options'/>
-              <TextField label="Leave a comment about this event" name='comment'/>
-                <SubmitField value='Submit'/>
-                <ErrorsField/>
-                <HiddenField name='eventId' value={this.props.eventId}/>
-                <HiddenField name='createdAt' value={new Date()}/>
-                <HiddenField name='rating' value={this.state.rating}/>
-                </AccordionPanel>
-              </AccordionItem>
-              </Accordion>
-                </Segment>
-              </AutoForm>
-
+                  </div>
+                  <SelectField label ='COVID-19 Status' name='covid' options={covidOptions} placeholder='Choose one of options'/>
+                  <TextField label="Leave a comment about this event" name='comment'/>
+                  <SubmitField value='Submit'/>
+                  <ErrorsField/>
+                  <HiddenField name='eventId' value={this.props.eventId}/>
+                  <HiddenField name='createdAt' value={new Date()}/>
+                  <HiddenField name='rating' value={this.state.rating}/>
+                  </AccordionPanel>
+                  </AccordionItem>
+                  </Accordion>
+                  </Segment>
+                  </AutoForm>
       );
     }
 }

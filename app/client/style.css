@@ -21,3 +21,38 @@
   margin-top: 50px;
 }
 
+.landing-section-1 {
+  background-color: #1ABC9C;
+}
+
+.landing-section-2 {
+  margin-top: 10px;
+  background-color: white;
+}
+
+.floating-label-form-group {
+  position: relative;
+  margin-bottom: 0;
+  padding-bottom: 0.5em;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.floating-label-form-group input,
+.floating-label-form-group textarea {
+  z-index: 1;
+  padding-right: 0;
+  padding-left: 0;
+  border: none;
+  border-radius: 0;
+  font-size: 1.5em;
+  background: none;
+  box-shadow: none !important;
+  resize: none;
+}
+
+.btn {
+  color: white;
+  background-color: #1ABC9C;
+  border-color: #18BC9C;
+  font-weight: 800;
+}

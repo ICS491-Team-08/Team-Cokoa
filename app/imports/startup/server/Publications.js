@@ -3,6 +3,7 @@ import { Roles } from 'meteor/alanning:roles';
 import { Events } from '../../api/event/Event';
 import { Comments } from '../../api/comment/Comment';
 import { UserInfo } from '../../api/userinfo/UserInfo';
+import { Contacts } from '../../api/contact/Contact';
 
 // User-level publication.
 // If logged in, then publish documents owned by this user. Otherwise publish nothing.
@@ -63,6 +64,20 @@ Meteor.publish('UserInfo', function () {
 Meteor.publish('AllUsers', function () {
   if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
     return Meteor.users.find();
+  }
+  return this.ready();
+});
+
+Meteor.publish(Contacts.allPublicationName, function () {
+  if (this.userId) {
+    return Contacts.collection.find();
+  }
+  return this.ready();
+});
+
+Meteor.publish(Contacts.adminPublicationName, function () {
+  if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
+    return Contacts.collection.find();
   }
   return this.ready();
 });

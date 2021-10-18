@@ -4,6 +4,16 @@
     { "email": "john@foo.com", "password": "changeme" }
   ],
 
+  "addContact": [
+    {
+      "names": "Jhon",
+      "email": "john@foo.com",
+      "phone": 808,
+      "message": "test",
+      "owner": "john@foo.com"
+    }
+  ],
+
   "defaultData": [
     {
       "title": "Event A",

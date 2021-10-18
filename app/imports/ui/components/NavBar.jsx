@@ -11,8 +11,8 @@ class NavBar extends React.Component {
   render() {
     const menuStyle = { marginBottom: '10px' };
     return (
-      <Menu style={menuStyle} attached="top" borderless inverted>
-        <Menu.Item as={NavLink} activeClassName="" exact to="/">
+      <Menu style={menuStyle} attached="top" borderless inverted id="navbar">
+        <Menu.Item id="nav" as={NavLink} activeClassName="" exact to="/">
           <Header inverted as='h1'>Meteor Prac</Header>
         </Menu.Item>
         {this.props.currentUser ? (
@@ -25,12 +25,13 @@ class NavBar extends React.Component {
         ) : ''}
         <Menu.Item position="right">
           {this.props.currentUser === '' ? (
+              <div className="nav">
             <Dropdown id="login-dropdown" text="Login" pointing="top right" icon={'user'}>
               <Dropdown.Menu>
                 <Dropdown.Item id="login-dropdown-sign-in" icon="user" text="Sign In" as={NavLink} exact to="/signin"/>
                 <Dropdown.Item id="login-dropdown-sign-up" icon="add user" text="Sign Up" as={NavLink} exact to="/signup"/>
               </Dropdown.Menu>
-            </Dropdown>
+            </Dropdown></div>
           ) : (
             <Dropdown id="navbar-current-user" text={this.props.currentUser} pointing="top right" icon={'user'}>
               <Dropdown.Menu>

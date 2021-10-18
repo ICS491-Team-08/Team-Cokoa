@@ -26,18 +26,31 @@ class Comment extends React.Component {
     return (
       <Feed.Event>
         <Feed.Content>
+          <div className="field">
+          <label>User: </label>
           <Feed.User>{this.props.comment.owner}</Feed.User>
-          <Feed.Date
-            content={this.props.comment.createdAt.toLocaleDateString("en-US")}
-          />
+          </div>
+          <div className="field">
+          <label>Date: </label>
+          <Feed.Date content={this.props.comment.createdAt.toLocaleDateString("en-US")}/>
+          </div>
           <Feed.Summary>
-            {this.props.comment.comment}
-            <br></br>
+            <div className="field">
+            <label>Mood: </label>
             <Rating
               defaultRating={this.props.comment.rating}
               maxRating={5}
               disabled
-            />
+            /></div>
+            <div className="field">
+            <label>Vaccination: </label>
+            {this.props.comment.vaccine}
+            </div>
+            <div className="field">
+            <label>Comment: </label>
+            {this.props.comment.comment}
+            </div>
+            <br/>
             {this.props.comment.approved ? (<Label>Approved</Label>) : <Button onClick={this.approved}>Approve</Button>}
           </Feed.Summary>
         </Feed.Content>

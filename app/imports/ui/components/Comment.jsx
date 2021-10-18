@@ -1,5 +1,5 @@
 import React from "react";
-import { Feed, Rating, Button, Label } from "semantic-ui-react";
+import { Feed, Rating, Button, Label, Icon } from "semantic-ui-react";
 import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
 import swal from "sweetalert";
@@ -27,6 +27,7 @@ class Comment extends React.Component {
       <Feed.Event>
         <Feed.Content>
           <div className="field">
+          <br/>
           <label>User: </label>
           <Feed.User>{this.props.comment.owner}</Feed.User>
           </div>
@@ -50,8 +51,7 @@ class Comment extends React.Component {
             <label>Comment: </label>
             {this.props.comment.comment}
             </div>
-            <br/>
-            {this.props.comment.approved ? (<Label>Approved</Label>) : <Button onClick={this.approved}>Approve</Button>}
+            {this.props.comment.approved ? (<Label>Approved <Icon fitted name='check circle' color='green'/></Label>) : <Button onClick={this.approved}>Approve</Button>}
           </Feed.Summary>
         </Feed.Content>
       </Feed.Event>

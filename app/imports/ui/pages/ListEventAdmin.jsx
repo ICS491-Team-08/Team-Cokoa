@@ -58,48 +58,63 @@ class ListEventAdmin extends React.Component {
           <Table.Header>
             <Table.Row>
               <Table.HeaderCell>User</Table.HeaderCell>
-              <Table.HeaderCell>Is Admin</Table.HeaderCell>
+              {Roles.userIsInRole(Meteor.userId(), "superAdmin") && (
+                <Table.HeaderCell>Is Admin</Table.HeaderCell>
+              )}
             </Table.Row>
           </Table.Header>
           <Table.Body>
-            {this.props.userinfo.map((listuser) => (
-              <Table.Row key={listuser._id}>
-                <Table.Cell>{listuser.username}</Table.Cell>
-                <Table.Cell>
-                  {listuser.isAdmin ? (
-                    <Button
-                      onClick={() =>
-                        Meteor.call(
-                          "removeAdmin",
-                          listuser._id,
-                          (error, result) =>
-                            error
-                              ? swal("Error", "Are you sure you have admin role?", "error")
-                              : swal("Success", result, "success")
-                        )
-                      }
-                    >
-                      Yes
-                    </Button>
-                  ) : (
-                    <Button
-                      onClick={() =>
-                        Meteor.call(
-                          "makeAdmin",
-                          listuser._id,
-                          (error, result) =>
-                            error
-                              ? swal("Error", "Are you sure you have admin role?", "error")
-                              : swal("Success", result, "success")
-                        )
-                      }
-                    >
-                      No
-                    </Button>
-                  )}
-                </Table.Cell>
-              </Table.Row>
-            ))}
+            {this.props.userinfo.map(
+              (listuser) =>
+                Meteor.userId() != listuser._id && (
+                  <Table.Row key={listuser._id}>
+                    <Table.Cell>{listuser.username}</Table.Cell>
+                    {Roles.userIsInRole(Meteor.userId(), "superAdmin") && (
+                      <Table.Cell>
+                        {listuser.isAdmin ? (
+                          <Button
+                            onClick={() =>
+                              Meteor.call(
+                                "removeAdmin",
+                                listuser._id,
+                                (error, result) =>
+                                  error
+                                    ? swal(
+                                        "Error",
+                                        "Are you sure you have admin role?",
+                                        "error"
+                                      )
+                                    : swal("Success", result, "success")
+                              )
+                            }
+                          >
+                            Yes
+                          </Button>
+                        ) : (
+                          <Button
+                            onClick={() =>
+                              Meteor.call(
+                                "makeAdmin",
+                                listuser._id,
+                                (error, result) =>
+                                  error
+                                    ? swal(
+                                        "Error",
+                                        "Are you sure you have admin role?",
+                                        "error"
+                                      )
+                                    : swal("Success", result, "success")
+                              )
+                            }
+                          >
+                            No
+                          </Button>
+                        )}
+                      </Table.Cell>
+                    )}
+                  </Table.Row>
+                )
+            )}
           </Table.Body>
         </Table>
       </Container>

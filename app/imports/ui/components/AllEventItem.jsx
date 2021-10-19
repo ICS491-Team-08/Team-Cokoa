@@ -4,13 +4,29 @@ import PropTypes from 'prop-types';
 import { withRouter, Link } from 'react-router-dom';
 import AddComment from '/imports/ui/components/AddComment';
 import Comment from '/imports/ui/components/Comment';
+import fetchImg from "../../api/fetchImg";
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 class AllEventItem extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      image: "/images/meteor-logo.png",
+    };
+  }
+
+  componentDidMount() {
+    if (this.props.event.image) {
+      fetchImg(this.props.event._id + this.props.event.image).then((res) =>
+        this.setState({ image: res })
+      );
+    }
+  }
+
   render() {
     return (
         <Card>
-          <Image src={this.props.event.image}/>
+          <Image src={this.state.image}/>
           <Card.Content>
             <Card.Header>{this.props.event.title}</Card.Header>
             <Card.Meta>{this.props.event.cost}</Card.Meta>

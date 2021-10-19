@@ -1,33 +1,36 @@
-import { Mongo } from 'meteor/mongo';
-import SimpleSchema from 'simpl-schema';
-import { Tracker } from 'meteor/tracker';
+import { Mongo } from "meteor/mongo";
+import SimpleSchema from "simpl-schema";
+import { Tracker } from "meteor/tracker";
 
 /** Encapsulates state and variable values for this collection. */
 class EventsCollection {
   constructor() {
     // The name of this collection.
-    this.name = 'EventsCollection';
+    this.name = "EventsCollection";
     // Define the Mongo collection.
     this.collection = new Mongo.Collection(this.name);
     // Define the structure of each document in the collection.
-    this.schema = new SimpleSchema({
-      title: String,
-      location: String,
-      image: String,
-      owner: {
-        type: String,
-        optional: true,
+    this.schema = new SimpleSchema(
+      {
+        title: String,
+        location: String,
+        image: { type: String, optional: true },
+        owner: {
+          type: String,
+          optional: true,
+        },
+        cost: {
+          type: String,
+          allowedValues: ["$", "$$", "$$$"],
+          defaultValue: "$",
+        },
+        description: String,
+        eventDate: {
+          type: Date,
+        },
       },
-      cost: {
-        type: String,
-        allowedValues: ['$', '$$', '$$$'],
-        defaultValue: '$',
-      },
-      description: String,
-      eventDate: {
-        type: Date,
-      },
-    }, { tracker: Tracker });
+      { tracker: Tracker }
+    );
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.
     this.collection.attachSchema(this.schema);
     // Define names for publications and subscriptions

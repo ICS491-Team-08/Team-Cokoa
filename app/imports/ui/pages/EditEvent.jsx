@@ -1,57 +1,97 @@
-import React from 'react';
-import { Grid, Loader, Header, Segment } from 'semantic-ui-react';
-import swal from 'sweetalert';
-import { AutoForm, ErrorsField, HiddenField, DateField, SelectField, SubmitField, TextField } from 'uniforms-semantic';
-import { Meteor } from 'meteor/meteor';
-import { withTracker } from 'meteor/react-meteor-data';
-import PropTypes from 'prop-types';
-import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
-import { Events } from '../../api/event/Event';
+import React, { createRef } from "react";
+import { Grid, Loader, Header, Segment } from "semantic-ui-react";
+import swal from "sweetalert";
+import {
+  AutoForm,
+  ErrorsField,
+  HiddenField,
+  DateField,
+  SelectField,
+  SubmitField,
+  TextField,
+} from "uniforms-semantic";
+import { Meteor } from "meteor/meteor";
+import { withTracker } from "meteor/react-meteor-data";
+import PropTypes from "prop-types";
+import SimpleSchema2Bridge from "uniforms-bridge-simple-schema-2";
+import { Events } from "../../api/event/Event";
+import UploadImg from "../components/UploadImg";
+import { extractFileType, uploadImg, createImg } from "../../api/uploadImg";
 
 const bridge = new SimpleSchema2Bridge(Events.schema);
 
 /** Renders the Page for editing a single document. */
 class EditEvent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.imgRef = createRef();
+  }
 
   /** On successful submit, insert the data. */
   submit(data) {
-    const { title, location, image, cost, description, eventDate, _id } = data;
-    Events.collection.update(_id, { $set: { title, location, image, cost, description, eventDate } }, (error) => (error ?
-      swal('Error', error.message, 'error') :
-      swal('Success', 'Event updated successfully', 'success')));
+    console.log('HI');
+    let { title, location, image, cost, description, eventDate, _id } = data;
+    image = this.imgRef.current ? extractFileType(this.imgRef.current) : "";
+    console.log(image);
+    Events.collection.update(
+      _id,
+      { $set: { title, location, image, cost, description, eventDate } },
+      (error) => {
+        if (error) {
+          swal("Error", error.message, "error");
+        } else {
+          if (this.imgRef.current) {
+            const file = createImg(this.imgRef.current, _id);
+            uploadImg(file);
+          }
+          swal("Success", "Event updated successfully", "success");
+        }
+      }
+    );
   }
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
-    return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
+    return this.props.ready ? (
+      this.renderPage()
+    ) : (
+      <Loader active>Getting data</Loader>
+    );
   }
 
   /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
   renderPage() {
     return (
-        <Grid container centered>
-          <Grid.Column>
-            <Header as="h2" textAlign="center">Edit Event</Header>
-            <AutoForm schema={bridge} onSubmit={data => this.submit(data)} model={this.props.doc}>
-              <Segment>
-                <TextField name='title'/>
-                <DateField
-                    name="eventDate"
-                    label="Date"
-                    max={new Date(2100, 1, 1)}
-                    min={new Date(2000, 1, 1)}
-                />
-                <TextField name='location'/>
-                <TextField name='image'/>
-                <TextField name='description'/>
-                <SelectField name='cost'/>
-                <SubmitField value='Submit'/>
-                <ErrorsField/>
-                <HiddenField name='owner' />
-              </Segment>
-            </AutoForm>
-          </Grid.Column>
-        </Grid>
+      <Grid container centered>
+        <Grid.Column>
+          <Header as="h2" textAlign="center">
+            Edit Event
+          </Header>
+          <AutoForm
+            schema={bridge}
+            onSubmit={(data) => this.submit(data)}
+            model={this.props.doc}
+          >
+            <Segment>
+              <TextField name="title" />
+              <DateField
+                name="eventDate"
+                label="Date"
+                max={new Date(2100, 1, 1)}
+                min={new Date(2000, 1, 1)}
+              />
+              <TextField name="location" />
+              <TextField name="description" />
+              <SelectField name="cost" />
+              <UploadImg imgRef={this.imgRef} />
+              <SubmitField value="Submit" />
+              <ErrorsField />
+              <HiddenField name="owner" />
+              <HiddenField name="image" />
+            </Segment>
+          </AutoForm>
+        </Grid.Column>
+      </Grid>
     );
   }
 }

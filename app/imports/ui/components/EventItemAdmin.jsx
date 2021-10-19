@@ -2,13 +2,29 @@ import React from 'react';
 import { Table, Image, Feed } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import Comment from '/imports/ui/components/Comment';
+import fetchImg from "../../api/fetchImg";
 
 /** Renders a single row in the List Stuff (Admin) table. See pages/ListStuffAdmin.jsx. */
 class EventItemAdmin extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      image: "/images/meteor-logo.png",
+    };
+  }
+
+  componentDidMount() {
+    if (this.props.event.image) {
+      fetchImg(this.props.event._id + this.props.event.image).then((res) =>
+        this.setState({ image: res })
+      );
+    }
+  }
+
   render() {
     return (
         <Table.Row>
-          <Table.Cell> <Image size='tiny' src={this.props.event.image}/> </Table.Cell>
+          <Table.Cell> <Image size='tiny' src={this.state.image}/> </Table.Cell>
           <Table.Cell>{this.props.event.title}</Table.Cell>
           <Table.Cell>{this.props.event.eventDate?.toDateString()}</Table.Cell>
           <Table.Cell>{this.props.event.location}</Table.Cell>

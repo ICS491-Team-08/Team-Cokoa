@@ -18,7 +18,7 @@
     {
       "title": "Event A",
       "location": "Ala Moana Shopping Center",
-      "image": "/images/meteor-logo.png",
+      "image": "",
       "owner": "john@foo.com",
       "cost": "$",
       "description": "This is event A",
@@ -27,7 +27,7 @@
     {
       "title": "Event B",
       "location": "Campus Center",
-      "image": "/images/meteor-logo.png",
+      "image": "",
       "owner": "john@foo.com",
       "cost": "$",
       "description": "This is event B",
@@ -36,7 +36,7 @@
     {
       "title": "Event C",
       "location": "Queen Kapiolani Park",
-      "image": "/images/meteor-logo.png",
+      "image": "",
       "owner": "admin@foo.com",
       "cost": "$",
       "description": "This is event C",
@@ -45,7 +45,7 @@
     {
       "title": "Event D",
       "location": "Waikiki",
-      "image": "/images/meteor-logo.png",
+      "image": "",
       "owner": "admin@foo.com",
       "cost": "$",
       "description": "This is event D",

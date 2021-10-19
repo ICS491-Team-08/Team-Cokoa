@@ -1,25 +1,9 @@
 import React from "react";
-import { Button, Grid, Header, Image, Input, Segment } from "semantic-ui-react";
+import { Button, Container, Grid, GridRow, Header, Icon, Image, Input, Menu, Segment } from "semantic-ui-react";
 import { Fade } from "react-slideshow-image";
 import { Link } from "react-router-dom";
 import 'react-slideshow-image/dist/styles.css';
-import SimpleSchema from 'simpl-schema';
 import swal from 'sweetalert';
-import { Contacts } from '../../api/contact/Contact';
-import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
-
-const formSchema = new SimpleSchema({
-  name: String,
-  email: String,
-  phone: Number,
-  message: String,
-  owner: {
-    type: String,
-    optional: true,
-  },
-});
-
-const bridge = new SimpleSchema2Bridge(formSchema);
 
 /** A simple static component to render some text for the landing page. */
 class Landing extends React.Component {
@@ -29,7 +13,7 @@ class Landing extends React.Component {
         <LandingCall />
         <br/>
         <br/>
-        <ContactUs />
+        <AboutUs />
       </div>
     );
   }
@@ -95,23 +79,7 @@ class LandingCall extends React.Component {
   }
 }
 
-class ContactUs extends React.Component {
-
-  /** On submit, insert the data. */
-  submit(data, formRef) {
-    const { name, email, phone, message } = data;
-    const owner = Meteor.user().username;
-    Contacts.collection.insert({ name, email, phone, message, owner },
-        (error) => {
-          if (error) {
-            swal('Error', error.message, 'error');
-          } else {
-            swal('Success', 'Item added successfully', 'success');
-            formRef.reset();
-          }
-        });
-  }
-
+class AboutUs extends React.Component {
   render() {
     let fRef = null;
     return (
@@ -120,44 +88,52 @@ class ContactUs extends React.Component {
             <Grid.Column>
               <Grid verticalAlign="middle" textAlign="center" columns={1}>
                 <div>
-                  <h1>CONTACT ME</h1>
-                  <form ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)} >
-                  <div>
-                  <div className="floating-label-form-group">
-                    <label htmlFor="name">Name </label>
-                    <input name="name" required placeholer="Name">
-                    </input>
-                  </div>
-                  </div>
-                  <div>
-                    <div className="floating-label-form-group">
-                      <label htmlFor="email">Email Address </label>
-                      <input name="email" required placeholer="Email Address">
-                      </input>
-                    </div>
-                  </div>
-                  <div>
-                    <div className="floating-label-form-group">
-                      <label htmlFor="phone">Phone Number </label>
-                      <input name="phone" placeholer="Phone Number">
-                      </input>
-                    </div>
-                  </div>
-                  <div>
-                    <div className="floating-label-form-group">
-                      <label htmlFor="message">Message </label>
-                      <input name="message" placeholer="Message">
-                      </input>
-                    </div>
-                  </div>
-                  <br/>
-                  <div>
-                    <button value='Submit' className="btn">Send</button>
-                  </div>
-                  </form>
+                  <h1>ABOUT US</h1>
                 </div>
               </Grid>
             </Grid.Column>
+            <Container className="about-us-member" textAlign="center">
+            <Grid columns={4} padded>
+              <Grid.Row>
+                <Grid.Column>
+                  <h2>Yong</h2>
+                  <div className="ui borderless menu">
+                    <a className="item"><Icon name="github" size='large'/></a>
+                    <a className="item"><Icon name="linkedin" size='large'/></a>
+                    <a className="item"><Icon name="google plus" size='large'/></a>
+                    <a className="item"><Icon name="twitter" size='large'/></a>
+                  </div>
+                </Grid.Column>
+                <Grid.Column>
+                  <h2>Kai</h2>
+                  <div className="ui borderless menu">
+                    <a className="item"><Icon name="github" size='large'/></a>
+                    <a className="item"><Icon name="linkedin" size='large'/></a>
+                    <a className="item"><Icon name="google plus" size='large'/></a>
+                    <a className="item"><Icon name="twitter" size='large'/></a>
+                  </div>
+                </Grid.Column>
+                <Grid.Column>
+                  <h2>Yeji</h2>
+                  <div className="ui borderless menu">
+                    <a className="item"><Icon name="github" size='large'/></a>
+                    <a className="item"><Icon name="linkedin" size='large'/></a>
+                    <a className="item"><Icon name="google plus" size='large'/></a>
+                    <a className="item"><Icon name="twitter" size='large'/></a>
+                  </div>
+                </Grid.Column>
+                <Grid.Column>
+                  <h2>Hoon</h2>
+                  <div className="ui borderless menu">
+                    <a className="item"><Icon name="github" size='large'/></a>
+                    <a className="item"><Icon name="linkedin" size='large'/></a>
+                    <a className="item"><Icon name="google plus" size='large'/></a>
+                    <a className="item"><Icon name="twitter" size='large'/></a>
+                  </div>
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
+            </Container>
           </Grid>
         </section>
     );

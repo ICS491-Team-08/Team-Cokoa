@@ -28,8 +28,8 @@ class EventsCollection {
       },
       image: {
         type: String,
-        // defaultValue: 'https://www.valuecoders.com/blog/wp-content/uploads/2015/10/Meteor.png',
         optional: true,
+        defaultValue: 'https://www.valuecoders.com/blog/wp-content/uploads/2015/10/Meteor.png',
       }
     }, { tracker: Tracker });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.

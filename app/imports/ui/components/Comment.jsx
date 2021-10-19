@@ -45,6 +45,10 @@ class Comment extends React.Component {
             />
             </div>
             <div className="field">
+            <label>COVID-19 Status: </label>
+            {this.props.comment.covid}
+            </div>
+            <div className="field">
             <label>Comment: </label>
             {this.props.comment.comment}
             </div>

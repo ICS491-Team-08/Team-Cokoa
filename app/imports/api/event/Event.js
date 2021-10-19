@@ -13,7 +13,6 @@ class EventsCollection {
     this.schema = new SimpleSchema({
       title: String,
       location: String,
-      image: String,
       owner: {
         type: String,
         optional: true,
@@ -27,6 +26,11 @@ class EventsCollection {
       eventDate: {
         type: Date,
       },
+      image: {
+        type: String,
+        // defaultValue: 'https://www.valuecoders.com/blog/wp-content/uploads/2015/10/Meteor.png',
+        optional: true,
+      }
     }, { tracker: Tracker });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.
     this.collection.attachSchema(this.schema);

@@ -8,8 +8,23 @@ class EventItem extends React.Component {
 
   removeItem(docID) {
     // eslint-disable-next-line no-console
-    console.log(`item to delete is: ${docID}`);
-    this.props.Events.collection.remove(docID);
+    swal({
+      title: 'Delete Event',
+      text: 'Do you really want to delete this event?\n It will be deleted from My Event.',
+      icon: 'warning',
+      buttons: true,
+      dangerMode: true,
+    })
+        .then((willDelete) => {
+          if (willDelete) {
+            this.props.Events.collection.remove(docID);
+            swal('Delete successful', {
+              icon: 'success',
+            });
+          } else {
+            swal('Delete cancelled');
+          }
+        });
   }
 
   render() {

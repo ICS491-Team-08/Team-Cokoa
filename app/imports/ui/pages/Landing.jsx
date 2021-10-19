@@ -24,15 +24,21 @@ class LandingCall extends React.Component {
     const fadeImages = [
       {
         url: "images/meteor-logo.png",
-        caption: "First Slide",
+        caption: "COVID EVENTS",
+        caption2: "From various event information to participation, try participating with your family and friends.",
+        caption3: "Simply participate a event.",
       },
       {
         url: "images/meteor-logo.png",
-        caption: "Second Slide",
+        caption: "Upload Vaccination Card",
+        caption2: "Upload your vaccinated card to check the vaccination status of people attending the event and enjoy the event safely.",
+        caption3: "We use vaccination record verification to protect our users.",
       },
       {
         url: "images/meteor-logo.png",
-        caption: "Third Slide",
+        caption: "Add Event",
+        caption2: "Upload your own events for something you want.",
+        caption3: "Build valuable experiences by adding your own events.",
       },
     ];
     return (
@@ -50,7 +56,9 @@ class LandingCall extends React.Component {
                           circular
                           src={fadeImage.url} />
                     </div>
-                    <h2>{fadeImage.caption}</h2>
+                    <h1 style={{ color: "#FFFFFF" }}>{fadeImage.caption}</h1>
+                    <h2 style={{ color: "#FFFFFF" }}>{fadeImage.caption2}</h2>
+                    <h2 style={{ color: "#FFFFFF" }}>{fadeImage.caption3}</h2>
                   </div>
                 ))}
               </Fade>
@@ -59,11 +67,11 @@ class LandingCall extends React.Component {
         <Grid.Column>
           <Grid verticalAlign="middle" textAlign="center" columns={1} id="landing-page">
             <Grid.Column>
-              <Header style={{ color: "#FFFFFF" }} as="h1">
+              <Header style={{ color: "rgb(44, 62, 80)" }} as="h1">
                 Add your event and get pre-checked!
               </Header>
               <h3>
-                <p style={{ color: "#FFFFFF" }}>
+                <p style={{ color: "rgb(44, 62, 80)" }}>
                   Now get to work and modify this app!
                 </p>
               </h3>

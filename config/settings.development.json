@@ -35,8 +35,8 @@
     },
     {
       "title": "New Job Announcement",
-      "location": "New Job Announcement",
-      "image": "images/c.png",
+      "location": "ACADEMIC SUCCESS CENTER",
+      "image": "",
       "owner": "admin@foo.com",
       "cost": "$",
       "description": "Gain hands-on engineering experience working on a Test and Evaluation (T&E)",
@@ -45,7 +45,7 @@
     {
       "title": "NOAA Workshop Series",
       "location": "ACADEMIC SUCCESS CENTER",
-      "image": "https://url.kr/685chr",
+      "image": "",
       "owner": "admin@foo.com",
       "cost": "$",
       "description": "We will be hosting a workshop series that will highlight some of the opportunities.",

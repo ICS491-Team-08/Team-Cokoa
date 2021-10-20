@@ -16,40 +16,40 @@
 
   "defaultData": [
     {
-      "title": "Event A",
-      "location": "Ala Moana Shopping Center",
+      "title": "Surf Waikiki",
+      "location": "Waikiki Beach",
       "image": "",
       "owner": "john@foo.com",
       "cost": "$",
-      "description": "This is event A",
-      "eventDate": "06/01/21"
+      "description": "The Board of Student Activities (BOSA) has a few exciting events coming up this week we'd love to share with you all!",
+      "eventDate": "08/01/21"
     },
     {
-      "title": "Event B",
-      "location": "Campus Center",
+      "title": "Music Festival",
+      "location": "Ala Moana Center",
       "image": "",
       "owner": "john@foo.com",
       "cost": "$",
-      "description": "This is event B",
-      "eventDate": "06/01/21"
+      "description": "These days though the festival has transformed into an ahead-of-the-curve zeitgeist showcase, having a knack of tabbing artists right before they blow up. ",
+      "eventDate": "09/11/21"
     },
     {
-      "title": "Event C",
-      "location": "Queen Kapiolani Park",
+      "title": "New Job Announcement",
+      "location": "ACADEMIC SUCCESS CENTER",
       "image": "",
       "owner": "admin@foo.com",
       "cost": "$",
-      "description": "This is event C",
-      "eventDate": "06/01/21"
+      "description": "Gain hands-on engineering experience working on a Test and Evaluation (T&E)",
+      "eventDate": "08/01/21"
     },
     {
-      "title": "Event D",
-      "location": "Waikiki",
+      "title": "NOAA Workshop Series",
+      "location": "ACADEMIC SUCCESS CENTER",
       "image": "",
       "owner": "admin@foo.com",
       "cost": "$",
-      "description": "This is event D",
-      "eventDate": "06/01/21"
+      "description": "We will be hosting a workshop series that will highlight some of the opportunities.",
+      "eventDate": "09/01/21"
     }
   ]
 }

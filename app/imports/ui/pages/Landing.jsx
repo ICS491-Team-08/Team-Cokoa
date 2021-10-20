@@ -91,7 +91,6 @@ class LandingCall extends React.Component {
 
 class AboutUs extends React.Component {
   render() {
-    let fRef = null;
     return (
         <section className="landing-section-2">
           <Grid columns={1}>

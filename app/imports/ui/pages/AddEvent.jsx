@@ -71,15 +71,19 @@ class AddEvent extends React.Component {
   render() {
     let fRef = null;
     return (
+        <section className="add-event-page">
       <Grid container centered>
         <Grid.Column>
-          <Header as="h2" textAlign="center">
+          <br />
+          <Header as="h1" style={{ color: "rgb(44, 62, 80)" }} textAlign="center">
             Add Event
           </Header>
+          <br />
           <AutoForm
             ref={(ref) => {
               fRef = ref;
             }}
+            id="event-card-list"
             schema={bridge}
             onSubmit={(data) => this.submit(data, fRef)}
           >
@@ -101,6 +105,7 @@ class AddEvent extends React.Component {
           </AutoForm>
         </Grid.Column>
       </Grid>
+        </section>
     );
   }
 }

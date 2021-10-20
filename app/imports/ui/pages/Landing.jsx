@@ -1,9 +1,8 @@
 import React from "react";
-import { Button, Container, Grid, GridRow, Header, Icon, Image, Input, Menu, Segment } from "semantic-ui-react";
+import { Button, Container, Grid, Header, Image } from "semantic-ui-react";
 import { Fade } from "react-slideshow-image";
 import { Link } from "react-router-dom";
 import 'react-slideshow-image/dist/styles.css';
-import swal from 'sweetalert';
 
 /** A simple static component to render some text for the landing page. */
 class Landing extends React.Component {
@@ -104,45 +103,67 @@ class AboutUs extends React.Component {
             <Grid columns={4} padded>
               <Grid.Row>
                 <Grid.Column>
-                  <h2>Yong</h2>
-                  <button className="ui circular facebook icon button">
+                  <Header as="h2">Yong</Header>
+                  <button className="ui circular facebook icon button"
+                          onClick={() => window.open('https://yongkim93.github.io/', '_blank')}>
                     <i className="github icon"></i>
                   </button>
-                  <button className="ui circular linkedin icon button">
+                  <button className="ui circular linkedin icon button"
+                          onClick={() => window.open('https://www.linkedin.com/in/yongnam-kim-630752146/', '_blank')}>
                     <i className="linkedin icon"></i>
                   </button>
+                  <button className="ui circular google plus icon button"
+                          onClick={() => window.open('mailto:yong4@hawaii.edu', '_blank')}>
+                    <i className="envelope outline icon"></i>
+                  </button>
                 </Grid.Column>
+
                 <Grid.Column>
                   <h2>Kai</h2>
-                  <button className="ui github button">
+                  <button className="ui circular facebook icon button"
+                          onClick={() => window.open('https://hwangwooj.github.io/', '_blank')}>
                     <i className="github icon"></i>
-                    Github
                   </button>
-                  <button className="ui linkedin button">
+                  <button className="ui circular linkedin icon button"
+                          onClick={() => window.open('https://', '_blank')}>
                     <i className="linkedin icon"></i>
-                    LinkedIn
+                  </button>
+                  <button className="ui circular google plus icon button"
+                          onClick={() => window.open('mailto:hwangwoo@hawaii.edu', '_blank')}>
+                    <i className="envelope outline icon"></i>
                   </button>
                 </Grid.Column>
+
                 <Grid.Column>
                   <h2>Yeji</h2>
-                  <div className="ui borderless menu">
-                    <a className="item"><Icon name="github" size='large'/>
-
-
-                    </a>
-                    <a className="item"><Icon name="linkedin" size='large'/></a>
-                    <a className="item"><Icon name="google plus" size='large'/></a>
-                    <a className="item"><Icon name="twitter" size='large'/></a>
-                  </div>
+                  <button className="ui circular facebook icon button"
+                          onClick={() => window.open('https://yejihan92.github.io/', '_blank')}>
+                    <i className="github icon"></i>
+                  </button>
+                                   <button className="ui circular linkedin icon button"
+                          onClick={() => window.open('https://www.linkedin.com/in/yeji-han-063b231b5/', '_blank')}>
+                    <i className="linkedin icon"></i>
+                  </button>
+                  <button className="ui circular google plus icon button"
+                          onClick={() => window.open('mailto:hany7@hawaii.edu', '_blank')}>
+                    <i className="envelope outline icon"></i>
+                  </button>
                 </Grid.Column>
+
                 <Grid.Column>
                   <h2>Cheolhoon</h2>
-                  <div className="ui borderless menu">
-                    <a className="item"><Icon name="github" size='large'/></a>
-                    <a className="item"><Icon name="linkedin" size='large'/></a>
-                    <a className="item"><Icon name="google plus" size='large'/></a>
-                    <a className="item"><Icon name="twitter" size='large'/></a>
-                  </div>
+                  <button className="ui circular facebook icon button"
+                          onClick={() => window.open('https://cheolhoon.github.io/', '_blank')}>
+                    <i className="github icon"></i>
+                  </button>
+                  <button className="ui circular linkedin icon button"
+                          onClick={() => window.open('https://www.linkedin.com/in/cheolhoon/', '_blank')}>
+                    <i className="linkedin icon"></i>
+                  </button>
+                  <button className="ui circular google plus icon button"
+                          onClick={() => window.open('mailto:choi4879@hawaii.edu', '_blank')}>
+                    <i className="envelope outline icon"></i>
+                  </button>
                 </Grid.Column>
               </Grid.Row>
             </Grid>

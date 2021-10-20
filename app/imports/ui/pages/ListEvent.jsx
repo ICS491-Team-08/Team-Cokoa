@@ -21,7 +21,10 @@ class ListEvent extends React.Component {
 
 
         <Container>
-          <Header as="h2" textAlign="center">My Events</Header>
+          <br />
+          <Header as="h1" style={{ color: "rgb(44, 62, 80)" }} textAlign="center">My Events</Header>
+          <br />
+          <br />
           <Card.Group>
             {this.props.events.map((event) => <EventItem key={event._id} event={event} Events={Events} />)}
           </Card.Group>

@@ -20,7 +20,10 @@ class ListAllEvents extends React.Component {
     return (
 
         <Container>
-          <Header as="h2" textAlign="center">All Events</Header>
+          <br />
+          <Header as="h1" style={{ color: "rgb(44, 62, 80)" }} textAlign="center">All Events</Header>
+          <br />
+          <br />
           <Card.Group>
             {this.props.events.map((event) => <AllEventItem key={event._id} event={event} comments={this.props.comments.filter(comment => (comment.eventId === event._id))}/>)}
           </Card.Group>

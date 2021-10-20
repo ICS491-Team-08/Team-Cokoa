@@ -26,21 +26,21 @@ class LandingCall extends React.Component {
     const fadeImages = [
       {
         url: "images/meteor-logo.png",
-        caption: "COVID EVENTS",
-        caption2: "From various event information to participation, try participating with your family and friends.",
-        caption3: "Simply participate a event.",
+        caption: "Add Your Events/Meeteings!",
+        caption2: "-Share information about events/meetings that you want to host.",
+        caption3: "-See who wants to join your events/meetings and see if they are approved by the admin. ",
       },
       {
         url: "images/meteor-logo.png",
-        caption: "Upload Vaccination Card",
-        caption2: "Upload your vaccinated card to check the vaccination status of people attending the event and enjoy the event safely.",
-        caption3: "We use vaccination record verification to protect our users.",
+        caption: "Check-In Events/Meetings Around You!",
+        caption2: "-Let the host know that you want to join.",
+        caption3: "-Upload your COVID-19 vaccination card or test result and be a safe member.",
       },
       {
         url: "images/meteor-logo.png",
-        caption: "Add Event",
-        caption2: "Upload your own events for something you want.",
-        caption3: "Build valuable experiences by adding your own events.",
+        caption: "Manage Users and Events/Meetings!",
+        caption2: "-Approve safe users who successfully upload a proof of vaccination/test result.",
+        caption3: "-Authorize other users admin role to manage more efficiently.",
       },
     ];
     return (
@@ -58,7 +58,8 @@ class LandingCall extends React.Component {
                           circular
                           src={fadeImage.url} />
                     </div>
-                    <h1 style={{ color: "#FFFFFF" }}>{fadeImage.caption}</h1>
+                    <br/>
+                    <h1 style={{ color: "#FFFFFF", fontSize: "50px" }}>{fadeImage.caption}</h1>
                     <h2 style={{ color: "#FFFFFF" }}>{fadeImage.caption2}</h2>
                     <h2 style={{ color: "#FFFFFF" }}>{fadeImage.caption3}</h2>
                   </div>
@@ -68,19 +69,19 @@ class LandingCall extends React.Component {
         </Grid.Column>
         <Grid.Column>
           <Grid verticalAlign="middle" textAlign="center" columns={1} id="landing-page">
-            <Grid.Column>
+            {Meteor.userId() === null &&<Grid.Column>
               <Header style={{ color: "rgb(44, 62, 80)" }} as="h1">
-                Add your event and get pre-checked!
+                Let's hang out!
               </Header>
               <h3>
                 <p style={{ color: "rgb(44, 62, 80)" }}>
-                  Now get to work and modify this app!
+                  Sign up today & enjoy!
                 </p>
               </h3>
               <Link to="/signup">
-                {Meteor.userId() === null && <Button to="/signup">Sign Up</Button>}
+                <Button to="/signup">Sign Up</Button>
               </Link>
-            </Grid.Column>
+            </Grid.Column>}
           </Grid>
         </Grid.Column>
       </Grid>

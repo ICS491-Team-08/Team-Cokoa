@@ -56,14 +56,16 @@ class UploadImg extends React.Component {
           accept="image/*"
           style={{ display: "none" }}
         />
-        <div className="fileInput">
-        <button  class="ui large inverted red button"  href="#" id="fileSelect">
-          Upload Event Image.
-        </button>
-        </div>
         <div id="fileList">
           <p>No file is selected!</p>
         </div>
+        <br/>
+        <div className="fileInput">
+        <button  className="ui large inverted red button"  href="#" id="fileSelect">
+          Upload Event Image.
+        </button>
+        </div>
+        <br/>
       </>
     );
   }

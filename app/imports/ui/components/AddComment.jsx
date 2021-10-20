@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createRef } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Comments, CommentSchema } from '/imports/api/comment/Comment';
 import { Segment, Rating, Checkbox } from 'semantic-ui-react';
@@ -9,6 +9,8 @@ import PropTypes from 'prop-types';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
 import swal from 'sweetalert';
+import UploadImg from "../components/UploadImg";
+import { extractFileType, uploadImg, createImg } from "../../api/uploadImg";
 
 
 const formSchema = new SimpleSchema({
@@ -17,6 +19,7 @@ const formSchema = new SimpleSchema({
   rating: Number,
   eventId: String,
   createdAt: Date,
+  proof: String,
 });
 
 const bridge = new SimpleSchema2Bridge(formSchema);
@@ -40,15 +43,26 @@ const covidOptions = [
 /** Renders the Page for adding a document. */
 class AddComment extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.imgRef = createRef();
+  }
     /** Bind 'this' so that a ref to the Form can be saved in formRef and communicated between render() and submit(). */
-    submit(data, formRef) {
+    async submit(data, formRef) {
+      const image = this.imgRef.current
+        ? extractFileType(this.imgRef.current)
+        : "";
       const { comment, covid, rating, eventId, createdAt } = data;
       const owner = Meteor.user().username;
-      Comments.collection.insert({ comment, covid, rating, eventId, createdAt, owner, approved: false },
+      await Comments.collection.insert({ comment, covid, rating, eventId, createdAt, image, owner, approved: false },
           (error) => {
             if (error) {
               swal('Error', error.message, 'error');
             } else {
+              if (this.imgRef.current) {
+                const file = createImg(this.imgRef.current, id);
+                uploadImg(file);
+              }
               swal('Success', 'Item added successfully', 'success');
               formRef.reset();
             }
@@ -81,6 +95,7 @@ class AddComment extends React.Component {
                   </div>
                   <SelectField label ='COVID-19 Status' name='covid' options={covidOptions} placeholder='Choose one of options'/>
                   <TextField label="Leave a comment about this event" name='comment'/>
+                  <UploadImg imgRef={this.imgRef} />
                   <SubmitField value='Submit'/>
                   <ErrorsField/>
                   <HiddenField name='eventId' value={this.props.eventId}/>

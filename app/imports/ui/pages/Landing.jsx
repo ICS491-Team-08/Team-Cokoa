@@ -25,19 +25,19 @@ class LandingCall extends React.Component {
   render() {
     const fadeImages = [
       {
-        url: "images/my-event.png",
+        url: "images/events.png",
         caption: "Add Your Events/Meetings!",
         caption2: "Share information about events/meetings that you want to host.",
         caption3: "See who wants to join your events/meetings and see if they are approved by the admin. ",
       },
       {
-        url: "images/meteor-logo.png",
+        url: "images/check.png",
         caption: "Check-In Events/Meetings Around You!",
         caption2: "Let the host know that you want to join.",
         caption3: "Upload your COVID-19 vaccination card or test result and be a safe member.",
       },
       {
-        url: "images/meteor-logo.png",
+        url: "images/manage.png",
         caption: "Manage Users and Events/Meetings!",
         caption2: "Approve safe users who successfully upload a proof of vaccination/test result.",
         caption3: "Authorize other users admin role to manage more efficiently.",

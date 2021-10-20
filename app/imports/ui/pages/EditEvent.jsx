@@ -31,8 +31,7 @@ class EditEvent extends React.Component {
   submit(data) {
     console.log('HI');
     let { title, location, image, cost, description, eventDate, _id } = data;
-    image = this.imgRef.current ? extractFileType(this.imgRef.current) : "";
-    console.log(image);
+    image = this.imgRef.current ? extractFileType(this.imgRef.current) : (image || "");
     Events.collection.update(
       _id,
       { $set: { title, location, image, cost, description, eventDate } },

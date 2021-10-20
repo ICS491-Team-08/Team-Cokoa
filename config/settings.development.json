@@ -34,22 +34,22 @@
       "eventDate": "06/01/21"
     },
     {
-      "title": "Event C",
-      "location": "Queen Kapiolani Park",
-      "image": "",
+      "title": "New Job Announcement",
+      "location": "New Job Announcement",
+      "image": "images/c.png",
       "owner": "admin@foo.com",
       "cost": "$",
-      "description": "This is event C",
-      "eventDate": "06/01/21"
+      "description": "New Job Announcement",
+      "eventDate": "08/01/21"
     },
     {
-      "title": "Event D",
-      "location": "Waikiki",
-      "image": "",
+      "title": "NOAA Workshop Series",
+      "location": "ACADEMIC SUCCESS CENTER",
+      "image": "images/d.png",
       "owner": "admin@foo.com",
       "cost": "$",
-      "description": "This is event D",
-      "eventDate": "06/01/21"
+      "description": "We will be hosting a workshop series that will highlight some of the opportunities.",
+      "eventDate": "09/01/21"
     }
   ]
 }

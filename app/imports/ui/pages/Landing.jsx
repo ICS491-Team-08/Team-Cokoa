@@ -25,7 +25,7 @@ class LandingCall extends React.Component {
   render() {
     const fadeImages = [
       {
-        url: "images/my-event.jpg",
+        url: "images/my-event.png",
         caption: "Add Your Events/Meetings!",
         caption2: "Share information about events/meetings that you want to host.",
         caption3: "See who wants to join your events/meetings and see if they are approved by the admin. ",

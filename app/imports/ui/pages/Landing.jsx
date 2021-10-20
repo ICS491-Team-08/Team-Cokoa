@@ -105,33 +105,38 @@ class AboutUs extends React.Component {
               <Grid.Row>
                 <Grid.Column>
                   <h2>Yong</h2>
-                  <div className="ui borderless menu">
-                    <a className="item"><Icon name="github" size='large'/></a>
-                    <a className="item"><Icon name="linkedin" size='large'/></a>
-                    <a className="item"><Icon name="google plus" size='large'/></a>
-                    <a className="item"><Icon name="twitter" size='large'/></a>
-                  </div>
+                  <button className="ui circular facebook icon button">
+                    <i className="github icon"></i>
+                  </button>
+                  <button className="ui circular linkedin icon button">
+                    <i className="linkedin icon"></i>
+                  </button>
                 </Grid.Column>
                 <Grid.Column>
                   <h2>Kai</h2>
-                  <div className="ui borderless menu">
-                    <a className="item"><Icon name="github" size='large'/></a>
-                    <a className="item"><Icon name="linkedin" size='large'/></a>
-                    <a className="item"><Icon name="google plus" size='large'/></a>
-                    <a className="item"><Icon name="twitter" size='large'/></a>
-                  </div>
+                  <button className="ui github button">
+                    <i className="github icon"></i>
+                    Github
+                  </button>
+                  <button className="ui linkedin button">
+                    <i className="linkedin icon"></i>
+                    LinkedIn
+                  </button>
                 </Grid.Column>
                 <Grid.Column>
                   <h2>Yeji</h2>
                   <div className="ui borderless menu">
-                    <a className="item"><Icon name="github" size='large'/></a>
+                    <a className="item"><Icon name="github" size='large'/>
+
+
+                    </a>
                     <a className="item"><Icon name="linkedin" size='large'/></a>
                     <a className="item"><Icon name="google plus" size='large'/></a>
                     <a className="item"><Icon name="twitter" size='large'/></a>
                   </div>
                 </Grid.Column>
                 <Grid.Column>
-                  <h2>Hoon</h2>
+                  <h2>Cheolhoon</h2>
                   <div className="ui borderless menu">
                     <a className="item"><Icon name="github" size='large'/></a>
                     <a className="item"><Icon name="linkedin" size='large'/></a>

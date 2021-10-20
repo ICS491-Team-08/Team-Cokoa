@@ -1,4 +1,8 @@
 /* @import "react-slideshow-image/dist/styles.css"; */
+#body {
+  background-color: honeydew;
+}
+
 #navbar {
   background-color: rgb(44, 62, 80);
   font-size: medium;
@@ -28,10 +32,24 @@
 
 .landing-section-2 {
   margin-top: 10px;
-  background-color: white;
+  background-color: honeydew;
 }
 
 .about-us-member {
   margin-top: 30px;
   margin-bottom: 30px;
+}
+
+.add-event-page {
+  display: flex;
+  background-color: honeydew;
+}
+
+.ui.center.aligned.container {
+}
+
+.footer {
+  background-color: honeydew;
+  margin-bottom: auto;
+  margin-bottom: 100px;
 }

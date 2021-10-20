@@ -71,6 +71,7 @@ class AddEvent extends React.Component {
   render() {
     let fRef = null;
     return (
+        <section className="add-event-page">
       <Grid container centered>
         <Grid.Column>
           <Header as="h2" textAlign="center">
@@ -101,6 +102,7 @@ class AddEvent extends React.Component {
           </AutoForm>
         </Grid.Column>
       </Grid>
+        </section>
     );
   }
 }

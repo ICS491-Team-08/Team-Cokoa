@@ -3,9 +3,9 @@ import React from "react";
 /** The Footer appears at the bottom of every page. Rendered by the App Layout component. */
 class UploadImg extends React.Component {
   componentDidMount() {
-    const fileSelect = document.getElementById("fileSelect"),
-      fileElem = document.getElementById("fileElem"),
-      fileList = document.getElementById("fileList");
+    const fileSelect = document.getElementById("fileSelect" + this.props.eventId),
+      fileElem = document.getElementById("fileElem" + this.props.eventId),
+      fileList = document.getElementById("fileList" + this.props.eventId);
 
     fileSelect.addEventListener(
       "click",
@@ -18,7 +18,11 @@ class UploadImg extends React.Component {
       false
     );
 
-    fileElem.addEventListener("change", handleFiles.bind(fileElem, this.props.imgRef), false);
+    fileElem.addEventListener(
+      "change",
+      handleFiles.bind(fileElem, this.props.imgRef),
+      false
+    );
 
     function handleFiles(imgRef) {
       if (!this.files.length) {
@@ -42,7 +46,7 @@ class UploadImg extends React.Component {
           info.innerHTML =
             this.files[i].name + ": " + this.files[i].size + " bytes";
           li.appendChild(info);
-	  imgRef.current = this.files[i];
+          imgRef.current = this.files[i];
         }
       }
     }
@@ -52,16 +56,14 @@ class UploadImg extends React.Component {
       <>
         <input
           type="file"
-          id="fileElem"
+          id={"fileElem" + this.props.eventId}
           accept="image/*"
           style={{ display: "none" }}
         />
-        <div className="fileInput">
-        <button  class="ui large inverted red button"  href="#" id="fileSelect">
+        <a class="ui large inverted red button" href="#" id={"fileSelect" + this.props.eventId}>
           Upload Event Image.
-        </button>
-        </div>
-        <div id="fileList">
+        </a>
+        <div id={"fileList" + this.props.eventId}>
           <p>No file is selected!</p>
         </div>
       </>

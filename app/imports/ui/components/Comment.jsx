@@ -1,16 +1,29 @@
 import React from "react";
-import { Feed, Rating, Button, Label, Icon } from "semantic-ui-react";
+import { Feed, Rating, Button, Label, Icon, Image } from "semantic-ui-react";
 import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
 import swal from "sweetalert";
 import { Comments } from "../../api/comment/Comment";
+import fetchImg from "../../api/fetchImg"
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 class Comment extends React.Component {
   constructor(props) {
     super(props);
     this.approved = this.approved.bind(this);
+    this.state = {
+      image: null,
+    }
   }
+
+  componentDidMount() {
+    if (this.props.comment.proof) {
+      fetchImg(this.props.comment._id + this.props.comment.proof).then((res) =>
+        this.setState({ image: res })
+      );
+    }
+  }
+
   approved() {
     Comments.collection.update(
       this.props.comment._id,
@@ -22,7 +35,6 @@ class Comment extends React.Component {
     );
   }
   render() {
-    console.log(this.props.comment);
     return (
       <Feed.Event>
         <Feed.Content>
@@ -52,6 +64,7 @@ class Comment extends React.Component {
             <label>Comment: </label>
             {this.props.comment.comment}
             </div>
+            {this.state.image !== null && <Image size='tiny' src={this.state.image}/>}
             {this.props.isAdminPage && !this.props.comment.approved && (
               <Button onClick={this.approved}>Approve</Button>
             )}

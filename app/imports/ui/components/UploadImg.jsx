@@ -61,7 +61,7 @@ class UploadImg extends React.Component {
           style={{ display: "none" }}
         />
         <a class="ui large inverted red button" href="#" id={"fileSelect" + this.props.eventId}>
-          Upload Event Image.
+          {this.props.eventId ? "Add Vaccination Card" : "Upload Event Image"}
         </a>
         <div id={"fileList" + this.props.eventId}>
           <p>No file is selected!</p>

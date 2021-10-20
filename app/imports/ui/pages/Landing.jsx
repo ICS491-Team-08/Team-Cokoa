@@ -3,6 +3,9 @@ import { Button, Container, Grid, Header, Image } from "semantic-ui-react";
 import { Fade } from "react-slideshow-image";
 import { Link } from "react-router-dom";
 import 'react-slideshow-image/dist/styles.css';
+// import swal from 'sweetalert';
+import { Meteor } from 'meteor/meteor';
+
 
 /** A simple static component to render some text for the landing page. */
 class Landing extends React.Component {
@@ -75,7 +78,7 @@ class LandingCall extends React.Component {
                 </p>
               </h3>
               <Link to="/signup">
-                <Button to="/signup">Sign Up</Button>
+                {Meteor.userId() === null && <Button to="/signup">Sign Up</Button>}
               </Link>
             </Grid.Column>
           </Grid>

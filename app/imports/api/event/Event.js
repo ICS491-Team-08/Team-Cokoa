@@ -15,6 +15,10 @@ class EventsCollection {
         title: String,
         location: String,
         image: { type: String, optional: true },
+        defaultImage:{
+          type: String,
+          optional: true,
+        },
         owner: {
           type: String,
           optional: true,

@@ -8,7 +8,7 @@
     {
       "title": "Virtual Community Partner Spotlight",
       "location": "Zoom Meeting",
-      "image": "/images/spotlight.jpeg",
+      "defaultImage": "/images/spotlight.jpeg",
       "owner": "john@foo.com",
       "cost": "$",
       "description": "In collaboration with Kapiolani Community College's Service & Sustainability Learning Program, we are excited to present to you the October Virtual Community Partner Spotlight!",
@@ -17,7 +17,7 @@
     {
       "title": "EXPLORE MĀNOA",
       "location": "University of Hawaii at Manoa",
-      "image": "/images/manoa_event.png",
+      "defaultImage": "/images/manoa_event.png",
       "owner": "john@foo.com",
       "cost": "$",
       "description": "This FREE event is hosted by the University of Hawaii at Mānoa Office of Admissions. ",
@@ -26,7 +26,7 @@
     {
       "title": "Interstellar Cinderella",
       "location": "Streaming Online from the Stage(Honolulu)",
-      "image": "/images/cinderella.jpeg",
+      "defaultImage": "/images/cinderella.jpeg",
       "owner": "admin@foo.com",
       "cost": "$$",
       "description": "Based on the children’s book by Deborah Underwood, Cinderella is a space engineer looking to revolutionize space travel with her new invention. ",
@@ -35,7 +35,7 @@
     {
       "title": "HALEIWA MARKET",
       "location": "Waimea Valley\n\n59-864 Kamehameha Highway Haleiwa 96712 United States of America",
-      "image": "/images/famers_market.png",
+      "defaultImage": "/images/famers_market.png",
       "owner": "admin@foo.com",
       "cost": "$",
       "description": "Every Thursday starting at 2 pm shop and support local farmers and artisans at the Haleiwa Market located at the Pikake Pavilion in Waimea Valley.",

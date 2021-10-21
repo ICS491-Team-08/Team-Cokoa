@@ -18,6 +18,8 @@ class EventItem extends React.Component {
       fetchImg(this.props.event._id + this.props.event.image).then((res) =>
         this.setState({ image: res })
       );
+    }else if(this.props.event.defaultImage){
+      this.setState({image: this.props.event.defaultImage});
     }
   }
   removeItem(docID) {

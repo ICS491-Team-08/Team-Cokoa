@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
 import swal from "sweetalert";
 import { Comments } from "../../api/comment/Comment";
-import fetchImg from "../../api/fetchImg"
+import fetchImg from "../../api/fetchImg";
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 class Comment extends React.Component {
@@ -13,7 +13,7 @@ class Comment extends React.Component {
     this.approved = this.approved.bind(this);
     this.state = {
       image: null,
-    }
+    };
   }
 
   componentDidMount() {
@@ -27,7 +27,7 @@ class Comment extends React.Component {
   approved() {
     Comments.collection.update(
       this.props.comment._id,
-      { $set: { ...this.props.comment, approved: true } },
+      { $set: { ...this.props.comment, approved: !this.props.comment.approved } },
       (error) =>
         error
           ? swal("Error", error.message, "error")
@@ -39,36 +39,52 @@ class Comment extends React.Component {
       <Feed.Event>
         <Feed.Content>
           <div className="field">
-          <br/>
-          <label>User: </label>
-          <Feed.User>{this.props.comment.owner}</Feed.User>
+            <br />
+            <label>User: </label>
+            <Feed.User>{this.props.comment.owner}</Feed.User>
           </div>
           <div className="field">
-          <label>Date: </label>
-          <Feed.Date content={this.props.comment.createdAt.toLocaleDateString("en-US")}/>
+            <label>Date: </label>
+            <Feed.Date
+              content={this.props.comment.createdAt.toLocaleDateString("en-US")}
+            />
           </div>
           <Feed.Summary>
             <div className="field">
-            <label>Mood: </label>
-            <Rating
-              defaultRating={this.props.comment.rating}
-              maxRating={5}
-              disabled
-            />
+              <label>Mood: </label>
+              <Rating
+                defaultRating={this.props.comment.rating}
+                maxRating={5}
+                disabled
+              />
             </div>
             <div className="field">
-            <label>COVID-19 Status: </label>
-            {this.props.comment.covid}
+              <label>COVID-19 Status: </label>
+              {this.props.comment.covid}
             </div>
             <div className="field">
-            <label>Comment: </label>
-            {this.props.comment.comment}
+              <label>Comment: </label>
+              {this.props.comment.comment}
             </div>
-            {this.state.image !== null && <Image size='tiny' src={this.state.image}/>}
-            {this.props.isAdminPage && !this.props.comment.approved && (
-              <Button onClick={this.approved}>Approve</Button>
+            {this.state.image !== null && (
+              <Image size="tiny" src={this.state.image} />
             )}
-            {this.props.comment.approved && <Label>Approved <Icon fitted name='check circle' color='green'/></Label>}
+            {this.props.isAdminPage && (
+              <Button onClick={this.approved}>
+                {this.props.comment.approved ? (
+                  <>
+                    Approved <Icon fitted name="check circle" color="green" />
+                  </>
+                ) : (
+                  "Approve"
+                )}
+              </Button>
+            )}
+            {!this.props.isAdminPage && this.props.comment.approved && (
+              <Label>
+                Approved <Icon fitted name="check circle" color="green" />
+              </Label>
+            )}
           </Feed.Summary>
         </Feed.Content>
       </Feed.Event>

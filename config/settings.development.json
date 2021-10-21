@@ -4,52 +4,42 @@
     { "email": "john@foo.com", "password": "changeme" }
   ],
 
-  "addContact": [
-    {
-      "names": "Jhon",
-      "email": "john@foo.com",
-      "phone": 808,
-      "message": "test",
-      "owner": "john@foo.com"
-    }
-  ],
-
   "defaultData": [
     {
-      "title": "Surf Waikiki",
-      "location": "Waikiki Beach",
-      "image": "",
+      "title": "Virtual Community Partner Spotlight",
+      "location": "Zoom Meeting",
+      "image": "/images/spotlight.jpeg",
       "owner": "john@foo.com",
       "cost": "$",
-      "description": "The Board of Student Activities (BOSA) has a few exciting events coming up this week we'd love to share with you all!",
-      "eventDate": "08/01/21"
+      "description": "In collaboration with Kapiolani Community College's Service & Sustainability Learning Program, we are excited to present to you the October Virtual Community Partner Spotlight!",
+      "eventDate": "10/13/21"
     },
     {
-      "title": "Music Festival",
-      "location": "Ala Moana Center",
-      "image": "",
+      "title": "EXPLORE MĀNOA",
+      "location": "University of Hawaii at Manoa",
+      "image": "/images/manoa_event.png",
       "owner": "john@foo.com",
       "cost": "$",
-      "description": "These days though the festival has transformed into an ahead-of-the-curve zeitgeist showcase, having a knack of tabbing artists right before they blow up. ",
-      "eventDate": "09/11/21"
+      "description": "This FREE event is hosted by the University of Hawaii at Mānoa Office of Admissions. ",
+      "eventDate": "10/30/21"
     },
     {
-      "title": "New Job Announcement",
-      "location": "ACADEMIC SUCCESS CENTER",
-      "image": "",
+      "title": "Interstellar Cinderella",
+      "location": "Streaming Online from the Stage(Honolulu)",
+      "image": "/images/cinderella.jpeg",
       "owner": "admin@foo.com",
-      "cost": "$",
-      "description": "Gain hands-on engineering experience working on a Test and Evaluation (T&E)",
-      "eventDate": "08/01/21"
+      "cost": "$$",
+      "description": "Based on the children’s book by Deborah Underwood, Cinderella is a space engineer looking to revolutionize space travel with her new invention. ",
+      "eventDate": "10/22/21"
     },
     {
-      "title": "NOAA Workshop Series",
-      "location": "ACADEMIC SUCCESS CENTER",
-      "image": "",
+      "title": "HALEIWA MARKET",
+      "location": "Waimea Valley\n\n59-864 Kamehameha Highway Haleiwa 96712 United States of America",
+      "image": "/images/famers_market.png",
       "owner": "admin@foo.com",
       "cost": "$",
-      "description": "We will be hosting a workshop series that will highlight some of the opportunities.",
-      "eventDate": "09/01/21"
+      "description": "Every Thursday starting at 2 pm shop and support local farmers and artisans at the Haleiwa Market located at the Pikake Pavilion in Waimea Valley.",
+      "eventDate": "10/21/21"
     }
   ]
 }

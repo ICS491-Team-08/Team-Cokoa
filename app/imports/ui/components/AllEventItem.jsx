@@ -39,7 +39,7 @@ class AllEventItem extends React.Component {
             <Card.Description> Description: {this.props.event.description}</Card.Description>
           </Card.Content>
           <Card.Content extra className="comment-feed-allevent">
-            {this.props.comments.map((comment, index) => <Comment key={index} comment={comment} isAdminPage={false}/>)}
+            {this.props.comments.map((comment, index) => <Comment key={index} comment={comment} isAdminPage={false} length={this.props.comments.length}/>)}
           </Card.Content>
           <Card.Content extra>
             <AddComment owner={this.props.event.owner} eventId={this.props.event._id}/>

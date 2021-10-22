@@ -57,7 +57,7 @@ class EventItemAdmin extends React.Component {
           <Table.Cell>{this.props.event.owner}</Table.Cell>
           <Table.Cell>
             <Feed className="comment-feed">
-              {this.props.comments.map((comment, index) => <Comment key={index} comment={comment} isAdminPage={true}/>)}
+              {this.props.comments.map((comment, index) => <Comment key={index} comment={comment} isAdminPage={true} length={this.props.comments.length}/>)}
             </Feed>
           </Table.Cell>
           <Table.Cell>

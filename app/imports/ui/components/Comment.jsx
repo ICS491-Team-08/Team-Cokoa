@@ -86,7 +86,9 @@ class Comment extends React.Component {
                 Approved <Icon fitted name="check circle" color="green" />
               </Label>
             )}
+            {this.props.length > 1 && (<div>
             <br/><br/><hr/><br/>
+            </div>)}
           </Feed.Summary>
         </Feed.Content>
       </Feed.Event>

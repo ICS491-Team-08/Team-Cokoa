@@ -50,6 +50,15 @@
   margin-bottom: 100px;
 }
 
+#signout-page {
+  font-size: x-large;
+}
+
+.signout-image {
+  height: 500px;
+  width: 800px;
+}
+
 .align-center-mode {
   display: flex !important;
   flex-direction: column;

@@ -23,6 +23,10 @@ class Landing extends React.Component {
 
 class LandingCall extends React.Component {
   render() {
+    const switchImage = {
+      duration: 2000,
+      transitionDuration: 1000,
+    }
     const fadeImages = [
       {
         url: "images/events2.png",
@@ -48,7 +52,7 @@ class LandingCall extends React.Component {
       <Grid columns={1}>
         <Grid.Column>
             <div className="slide-container">
-              <Fade>
+              <Fade {...switchImage}>
                 {fadeImages.map((fadeImage, index) => (
                   <div className="each-fade" key={index}>
                     <div className="image-container">

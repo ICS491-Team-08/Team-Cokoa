@@ -32,7 +32,9 @@ class AllEventItem extends React.Component {
           <Card.Content>
             <Card.Header>{this.props.event.title}</Card.Header>
             <Card.Meta>{this.props.event.cost}</Card.Meta>
-            <Card.Description><strong>Date: {this.props.event.eventDate.toDateString()}</strong></Card.Description>
+            <Card.Description>
+              <strong>Date: {this.props.event.eventDate.toDateString()}</strong>
+            </Card.Description>
             <Card.Description> Location: {this.props.event.location}</Card.Description>
             <Card.Description> Description: {this.props.event.description}</Card.Description>
           </Card.Content>

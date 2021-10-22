@@ -1,5 +1,5 @@
 import React, { createRef } from "react";
-import { Grid, Segment, Header } from "semantic-ui-react";
+import { Grid, Segment, Header, Form } from "semantic-ui-react";
 import {
   AutoForm,
   ErrorsField,
@@ -31,6 +31,7 @@ const formSchema = new SimpleSchema({
   },
   description: String,
   eventDate: Date,
+  endDate:Date,
 });
 
 const bridge = new SimpleSchema2Bridge(formSchema);
@@ -47,11 +48,11 @@ class AddEvent extends React.Component {
     const image = this.imgRef.current
       ? extractFileType(this.imgRef.current)
       : "";
-    const { title, location, cost, description, eventDate } = data;
+    const { title, location, cost, description, eventDate, endDate } = data;
     const owner = Meteor.user().username;
 
     await Events.collection.insert(
-      { title, location, image, cost, description, eventDate, owner },
+      { title, location, image, cost, description, eventDate, endDate, owner },
       (error, id) => {
         if (error) {
           swal("Error", error.message, "error");
@@ -89,15 +90,25 @@ class AddEvent extends React.Component {
           >
             <Segment>
               <TextField name="title" />
-              <DateField
-                name="eventDate"
-                label="Date"
-                max={new Date(2100, 1, 1)}
-                min={new Date(2000, 1, 1)}
-              />
-              <TextField name="location" />
+              <Form.Group widths={'equal'}>
+                <DateField
+                  name="eventDate"
+                  label="Start Date"
+                  max={new Date(2100, 1, 1)}
+                  min={new Date(2000, 1, 1)}
+                />
+                <DateField
+                    name="endDate"
+                    label="End Date"
+                   max={new Date(2100, 1, 1)}
+                    min={new Date(2000, 1, 1)}
+                />
+              </Form.Group>
+              <Form.Group widths={'equal'}>
+                <TextField name="location" />
+                <SelectField name="cost" />
+              </Form.Group>
               <TextField name="description" />
-              <SelectField name="cost" />
               <UploadImg imgRef={this.imgRef} />
               <SubmitField value="Submit" />
               <ErrorsField />

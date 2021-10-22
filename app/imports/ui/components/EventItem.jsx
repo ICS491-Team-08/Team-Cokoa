@@ -3,6 +3,7 @@ import { Image, Card, Feed, Button, Icon, Menu } from "semantic-ui-react";
 import PropTypes from "prop-types";
 import { withRouter, Link } from "react-router-dom";
 import fetchImg from "../../api/fetchImg";
+require('datejs');
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 class EventItem extends React.Component {
@@ -51,7 +52,7 @@ class EventItem extends React.Component {
           <Card.Header>{this.props.event.title}</Card.Header>
           <Card.Meta>{this.props.event.cost}</Card.Meta>
           <Card.Description>
-            <strong>Date: {this.props.event.eventDate.toDateString()}</strong>
+            <strong>Date: {this.props.event.endDate ? this.props.event.eventDate.toString("MMMM dS") + " ~ " + this.props.event.endDate.toString("dS, yyyy") : this.props.event.eventDate.toString("MMMM dS, yyyy")}</strong>
           </Card.Description>
           <Card.Description>
             {" "}

@@ -20,6 +20,7 @@ class ListAllEvents extends React.Component {
     return (
 
         <Container>
+          <div className="align-center-mode">
           <br />
           <Header as="h1" style={{ color: "rgb(44, 62, 80)" }} textAlign="center">All Events</Header>
           <br />
@@ -27,6 +28,7 @@ class ListAllEvents extends React.Component {
           <Card.Group>
             {this.props.events.map((event) => <AllEventItem key={event._id} event={event} comments={this.props.comments.filter(comment => (comment.eventId === event._id))}/>)}
           </Card.Group>
+          </div>
         </Container>
     );
   }

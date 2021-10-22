@@ -31,6 +31,10 @@ const formSchema = new SimpleSchema({
   },
   description: String,
   eventDate: Date,
+  endDate:{
+    type: Date,
+    optional: true,
+  },
 });
 
 const bridge = new SimpleSchema2Bridge(formSchema);
@@ -47,11 +51,11 @@ class AddEvent extends React.Component {
     const image = this.imgRef.current
       ? extractFileType(this.imgRef.current)
       : "";
-    const { title, location, cost, description, eventDate } = data;
+    const { title, location, cost, description, eventDate, endDate } = data;
     const owner = Meteor.user().username;
 
     await Events.collection.insert(
-      { title, location, image, cost, description, eventDate, owner },
+      { title, location, image, cost, description, eventDate, endDate, owner },
       (error, id) => {
         if (error) {
           swal("Error", error.message, "error");
@@ -89,15 +93,21 @@ class AddEvent extends React.Component {
           >
             <Segment>
               <TextField name="title" />
-              <DateField
-                name="eventDate"
-                label="Date"
-                max={new Date(2100, 1, 1)}
-                min={new Date(2000, 1, 1)}
-              />
-              <TextField name="location" />
+                <DateField
+                  name="eventDate"
+                  label="Start Date"
+                  max={new Date(2100, 1, 1)}
+                  min={new Date(2000, 1, 1)}
+                />
+                <DateField
+                    name="endDate"
+                    label="End Date"
+                   max={new Date(2100, 1, 1)}
+                    min={new Date(2000, 1, 1)}
+                />
+                <TextField name="location" />
+                <SelectField name="cost" />
               <TextField name="description" />
-              <SelectField name="cost" />
               <UploadImg imgRef={this.imgRef} />
               <SubmitField value="Submit" />
               <ErrorsField />

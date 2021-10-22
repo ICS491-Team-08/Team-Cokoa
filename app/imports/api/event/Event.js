@@ -32,6 +32,10 @@ class EventsCollection {
         eventDate: {
           type: Date,
         },
+        endDate:{
+          type: Date,
+          optional: true,
+        }
       },
       { tracker: Tracker }
     );

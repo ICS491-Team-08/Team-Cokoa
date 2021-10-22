@@ -15,7 +15,7 @@
   font-size: medium;
 }
 
-.each-fade{
+.each-fade {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -27,7 +27,7 @@
 }
 
 .landing-section-1 {
-  background-color: #1ABC9C;
+  background-color: #1abc9c;
 }
 
 .landing-section-2 {
@@ -57,4 +57,16 @@
 .signout-image {
   height: 500px;
   width: 800px;
+}
+
+.align-center-mode {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+@media only screen and (min-width: 1200px) {
+  .ui.container {
+    width: 1210px !important;
+  }
 }

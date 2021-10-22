@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table, Image, Feed } from 'semantic-ui-react';
+import { Table, Image, Feed, Button, Icon } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import Comment from '/imports/ui/components/Comment';
 import fetchImg from "../../api/fetchImg";
@@ -23,6 +23,28 @@ class EventItemAdmin extends React.Component {
     }
   }
 
+  removeItem(docID) {
+    // eslint-disable-next-line no-console
+    swal({
+      title: 'Delete Event',
+      text: 'Do you really want to delete this event?\n It will be deleted from My Event.',
+      icon: 'warning',
+      buttons: true,
+      dangerMode: true,
+    })
+        .then((willDelete) => {
+          if (willDelete) {
+            this.props.Events.collection.remove(docID);
+            console.log("Checking on something" +this.props.Events.collection);
+            swal('Delete successful', {
+              icon: 'success',
+            });
+          } else {
+            swal('Delete cancelled');
+          }
+        });
+  }
+
   render() {
     return (
         <Table.Row>
@@ -38,6 +60,15 @@ class EventItemAdmin extends React.Component {
               {this.props.comments.map((comment, index) => <Comment key={index} comment={comment} isAdminPage={true}/>)}
             </Feed>
           </Table.Cell>
+          <Table.Cell>
+          <Button
+            size="mini"
+            icon
+            onClick={() => this.removeItem(this.props.event._id)}
+          >
+            <Icon name="trash" color="red" />
+          </Button>
+          </Table.Cell>
         </Table.Row>
     );
   }
@@ -46,6 +77,7 @@ class EventItemAdmin extends React.Component {
 /** Require a document to be passed to this component. */
 EventItemAdmin.propTypes = {
   event: PropTypes.object.isRequired,
+  Events: PropTypes.object.isRequired,
   comments: PropTypes.array.isRequired,
 };
 

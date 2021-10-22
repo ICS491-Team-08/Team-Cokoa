@@ -37,6 +37,7 @@ class ListEventAdmin extends React.Component {
               <Table.HeaderCell>Description</Table.HeaderCell>
               <Table.HeaderCell>Owner</Table.HeaderCell>
               <Table.HeaderCell>Comments</Table.HeaderCell>
+              <Table.HeaderCell>Delete</Table.HeaderCell>
             </Table.Row>
           </Table.Header>
           <Table.Body>
@@ -44,6 +45,7 @@ class ListEventAdmin extends React.Component {
               <EventItemAdmin
                 key={event._id}
                 event={event}
+                Events={Events}
                 comments={this.props.comments.filter(
                   (comment) => comment.eventId === event._id
                 )}

@@ -65,6 +65,14 @@
   justify-content: center;
   align-items: center;
 }
+.comment-feed{
+  max-height: 24rem;
+  overflow-y: auto;
+}
+.comment-feed-allevent{
+  max-height: 17rem;
+  overflow-y: auto;
+}
 @media only screen and (min-width: 1200px) {
   .ui.container {
     width: 1210px !important;

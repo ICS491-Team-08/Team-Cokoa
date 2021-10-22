@@ -17,10 +17,7 @@ class ListEvent extends React.Component {
   /** Render the page once subscriptions have been received. */
   renderPage() {
     return (
-
-
-
-        <Container>
+        <Container className="align-center-mode">
           <br />
           <Header as="h1" style={{ color: "rgb(44, 62, 80)" }} textAlign="center">My Events</Header>
           <br />

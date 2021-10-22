@@ -49,3 +49,12 @@
   margin-top: 70px;
   margin-bottom: 100px;
 }
+
+#signout-page {
+  font-size: x-large;
+}
+
+.signout-image {
+  height: 500px;
+  width: 800px;
+}

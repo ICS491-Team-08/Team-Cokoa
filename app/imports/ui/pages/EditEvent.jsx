@@ -73,21 +73,21 @@ class EditEvent extends React.Component {
           >
             <Segment>
               <TextField name="title" />
-              <DateField
-                name="eventDate"
-                label="Start Date"
-                max={new Date(2100, 1, 1)}
-                min={new Date(2000, 1, 1)}
-              />
-              <DateField
-                  name="endDate"
-                  label="End Date"
+                <DateField
+                  name="eventDate"
+                  label="Start Date"
                   max={new Date(2100, 1, 1)}
                   min={new Date(2000, 1, 1)}
-              />
-              <TextField name="location" />
+                />
+                <DateField
+                    name="endDate"
+                    label="End Date"
+                    max={new Date(2100, 1, 1)}
+                    min={new Date(2000, 1, 1)}
+                />
+                <TextField name="location" />
+                <SelectField name="cost" />
               <TextField name="description" />
-              <SelectField name="cost" />
               <UploadImg imgRef={this.imgRef} />
               <SubmitField value="Submit" />
               <ErrorsField />

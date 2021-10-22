@@ -1,5 +1,5 @@
 import React, { createRef } from "react";
-import { Grid, Segment, Header, Form } from "semantic-ui-react";
+import { Grid, Segment, Header } from "semantic-ui-react";
 import {
   AutoForm,
   ErrorsField,
@@ -90,7 +90,6 @@ class AddEvent extends React.Component {
           >
             <Segment>
               <TextField name="title" />
-              <Form.Group widths={'equal'}>
                 <DateField
                   name="eventDate"
                   label="Start Date"
@@ -103,11 +102,8 @@ class AddEvent extends React.Component {
                    max={new Date(2100, 1, 1)}
                     min={new Date(2000, 1, 1)}
                 />
-              </Form.Group>
-              <Form.Group widths={'equal'}>
                 <TextField name="location" />
                 <SelectField name="cost" />
-              </Form.Group>
               <TextField name="description" />
               <UploadImg imgRef={this.imgRef} />
               <SubmitField value="Submit" />

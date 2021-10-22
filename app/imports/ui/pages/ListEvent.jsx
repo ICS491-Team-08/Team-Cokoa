@@ -23,14 +23,18 @@ class ListEvent extends React.Component {
           <Header as="h1" style={{ color: "rgb(44, 62, 80)" }} textAlign="center">My Events</Header>
           <br />
           <br />
-          <h3>
-            <p style={{ color: "rgb(44, 62, 80)" }}>
-              Add your event now!
-            </p>
-          </h3>
-          <Link to="/add">
-            <Button size="large" style={{ color: "rgb(44, 62, 80)" }} to="/add">Add Event</Button>
-          </Link>
+          {this.props.events !== null && (<div className="align-center-mode">
+            <h3>
+              <p style={{ color: "rgb(44, 62, 80)" }}>
+                Add your event now!
+              </p>
+            </h3>
+            <Link to="/add">
+              <Button size="large" style={{ color: "rgb(44, 62, 80)" }} to="/add">Add Event</Button>
+            </Link>
+            <br/>
+            <br/>
+          </div>)}
           <Card.Group>
             {this.props.events.map((event) => <EventItem key={event._id} event={event} Events={Events} />)}
           </Card.Group>

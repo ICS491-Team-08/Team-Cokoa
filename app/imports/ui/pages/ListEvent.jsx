@@ -23,7 +23,7 @@ class ListEvent extends React.Component {
           <Header as="h1" style={{ color: "rgb(44, 62, 80)" }} textAlign="center">My Events</Header>
           <br />
           <br />
-          {this.props.events !== null && (<div className="align-center-mode">
+          {this.props.events.length === 0 && (<div className="align-center-mode">
             <h3>
               <p style={{ color: "rgb(44, 62, 80)" }}>
                 Add your event now!

@@ -52,7 +52,7 @@ class EventItem extends React.Component {
           <Card.Header>{this.props.event.title}</Card.Header>
           <Card.Meta>{this.props.event.cost}</Card.Meta>
           <Card.Description>
-            <strong>Date: {this.props.event.endDate ? this.props.event.eventDate.toString("MMMM dS") + " ~ " + this.props.event.endDate.toString("dS, yyyy") : this.props.event.eventDate.toString("MMMM dS, yyyy")}</strong>
+            <strong>Date: {this.props.event.endDate ? this.props.event.eventDate.toString("MMM dS, yyyy") + " ~ " + this.props.event.endDate.toString("MMM dS, yyyy") : this.props.event.eventDate.toString("MMMM dS, yyyy")}</strong>
           </Card.Description>
           <Card.Description>
             {" "}

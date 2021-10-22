@@ -28,7 +28,7 @@ class EventItemAdmin extends React.Component {
         <Table.Row>
           <Table.Cell> <Image size='tiny' src={this.state.image}/> </Table.Cell>
           <Table.Cell>{this.props.event.title}</Table.Cell>
-          <Table.Cell>{this.props.event.endDate ? this.props.event.eventDate.toString("MMMM dS") + " ~ " + this.props.event.endDate.toString("dS, yyyy") : this.props.event.eventDate.toString("MMMM dS, yyyy")}</Table.Cell>
+          <Table.Cell>{this.props.event.endDate ? this.props.event.eventDate.toString("MMM dS, yyyy") + " ~ " + this.props.event.endDate.toString("MMM dS, yyyy") : this.props.event.eventDate.toString("MMMM dS, yyyy")}</Table.Cell>
           <Table.Cell>{this.props.event.location}</Table.Cell>
           <Table.Cell>{this.props.event.cost}</Table.Cell>
           <Table.Cell>{this.props.event.description}</Table.Cell>

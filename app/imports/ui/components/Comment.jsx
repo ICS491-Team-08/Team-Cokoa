@@ -39,7 +39,6 @@ class Comment extends React.Component {
       <Feed.Event>
         <Feed.Content>
           <div className="field">
-            <br />
             <label>User: </label>
             <Feed.User>{this.props.comment.owner}</Feed.User>
           </div>
@@ -76,7 +75,9 @@ class Comment extends React.Component {
                     Approved <Icon fitted name="check circle" color="green" />
                   </>
                 ) : (
-                  "Approve"
+                  <>
+                    Waiting for approval <Icon fitted name="wait"/>
+                  </>
                 )}
               </Button>
             )}
@@ -85,6 +86,7 @@ class Comment extends React.Component {
                 Approved <Icon fitted name="check circle" color="green" />
               </Label>
             )}
+            <br/><br/><hr/><br/>
           </Feed.Summary>
         </Feed.Content>
       </Feed.Event>

@@ -31,7 +31,10 @@ const formSchema = new SimpleSchema({
   },
   description: String,
   eventDate: Date,
-  endDate:Date,
+  endDate:{
+    type: Date,
+    optional: true,
+  },
 });
 
 const bridge = new SimpleSchema2Bridge(formSchema);

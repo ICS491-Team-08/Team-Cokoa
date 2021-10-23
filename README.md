@@ -12,7 +12,8 @@
 Find the Github Repo here: [Github Repo](https://github.com/ICS491-Team-08/Team-Cokoa) <br />
 
 See our deployed Website: [COKOA Website](https://team-cokoa.meteorapp.com/#/) <br />
-<br />
+You will need to login into the super-admin account to assign users an admin<br />
+Id: <b>admin@foo.com</b> passwords: <b>changeme</b>
 
 ## Overview
 We thought about the meeting of people after the pandemic. Since the pandemic is not over yet, we thought people should meet safely above all else. 

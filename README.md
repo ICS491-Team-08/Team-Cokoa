@@ -4,6 +4,7 @@
 
 * [Cokoa](#cokoa)
 * [Pages](#pages)
+* [Developer Guide](#developer-guide)
 * [Meet the Team](#meet-the-team)
 <br />
 
@@ -58,10 +59,50 @@ This page has the most functionalities so that the administrator can easily and 
 
 ### Sign-out Page:
 <img src="doc/out.png" width="70%" height="70%">
-Once user has signed out, they can click "return to home" button to go back to the main page.<br /><br />
+Once user has signed out, they can click "return to home" button to go back to the main page.<br /><br /><br />
 
+## Developer Guide: 
 
-<br />
+### Installation
+
+First, [install Meteor](https://www.meteor.com/install).
+
+Second, download [COKOA](https://github.com/ICS491-Team-08/Team-Cokoa), and request permission to gain access to COKOA. 
+
+Third, cd into the app/ directory and install required libraries: meteor:
+
+```
+$ meteor npm install
+```
+
+### Running the system
+
+After installation, you can run the application by typing:
+
+```
+$ meteor npm run start
+```
+The first time running the application will add default users: 
+
+```
+$ meteor npm run start
+
+> meteor-application-template-react@ start /Users/name/Desktop/GitHub/COKOA/app
+> meteor --no-release-check --exclude-archs web.browser.legacy,web.cordova --settings ../config/settings.development.json
+```
+
+### Deployment
+
+COKOA can be deployed to [Galaxy](http://galaxy.meteor.com).  To successfully deploy to Galaxy, invoke the following command from within the app/ directory:
+
+```
+SET DEPLOY_HOSTNAME=galaxy.meteor.com <br> meteor deploy team-cokoa.meteorapp.com --settings ../config/settings.production.json --free --mongo
+```
+
+Note that for this command to work unedited:
+
+  * You need to have a settings/settings.json file. See the file settings/sample.settings.json for hints on how to construct this file.
+<br /><br />
 
 ## Meet the Team:
 

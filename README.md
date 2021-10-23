@@ -23,7 +23,7 @@ These are the designs showcasing each page we have on COKOA.<br /><br />
 
 ### Landing Page:
 <img src="doc/landing.png" width="70%" height="70%">
-A landing page is the first page for users to interact with our website. It has buttons for log-in and sign-up.<br /><br />
+Landing page has information on the most basic features that users can utilize on our website. For better user experience, we have implemented carousel (Image slider) on our landing page so that users can simply view images with a brief explanation.<br /><br />
 
 ### Register Page:
 <img src="doc/up.png" width="70%" height="70%">
@@ -35,27 +35,27 @@ A sign-in page allows users to log in with their existing account. <br /><br />
 
 ### Add Event Page:
 <img src="doc/add.png" width="70%" height="70%">
-...<br /><br />
+On this page, users can add their meetings / events/ parties and then post them on “All Events” page. Through this page, you can provide other users with information regarding an event such as time, location, image, etc.<br /><br />
 
 ### My Event Page:
 <img src="doc/my.png" width="70%" height="70%">
-...<br /><br />
+Once you have added your events, now you can manage your events on this “My Events” page. You have options to either edit an event or delete it. <br /><br />
 
 ### Edit Event Page:
 <img src="doc/edit.png" width="70%" height="70%">
-...<br /><br />
+On the edit event page, all the information the user has put in is prefilled and it's ready to modify for the user.<br /><br />
 
 ### All Event Page:
 <img src="doc/all.png" width="70%" height="70%">
-...<br /><br />
+This “All Events” page is the core feature of our website. Users can find any event that they might be interested in and join any event by leaving a comment under the event. Share your vaccination status / test result of COVID-19 and wait until the administrator approves your status. Once you get approved, your status should be updated on “All Events” page and that will help all the participants feel safe and comfortable.<br /><br />
 
 ### Admin Page:
 <img src="doc/admin.png" width="70%" height="70%">
-...<br /><br />
+This page has the most functionalities so that the administrator can easily and efficiently manage this website. Admin (=administrator) has the access to approve other users’ participation depending on their health/COVID-19 status. Also, admin can delete any event if it’s past due or seems inappropriate. Admin can also authorize other users to have admin role so that this website is managed more efficiently.<br /><br />
 
 ### Sign-out Page:
 <img src="doc/out.png" width="70%" height="70%">
-...<br /><br />
+Once user has signed out, they can click "return to home" button to go back to the main page.<br /><br />
 
 
 <br />
